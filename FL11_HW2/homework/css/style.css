@@ -240,3 +240,7 @@ align-items: center;
 h2.tm-section-title:hover{
 	color: lightskyblue;
 }
+
+h2.tm-box-bg-title:hover{
+	color: white;
+}
