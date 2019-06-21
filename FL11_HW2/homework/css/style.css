@@ -221,12 +221,7 @@ h2 + p:first-of-type  {
 
 .tm-team-description-container  {
     max-width: 300px; 
- 
 }
-
-.tm-section-title:first-of-type  {
-	vertical-align: center;
-} 
 
 .tm-content-box.flex-2-col {
 display: flex;
@@ -242,3 +237,6 @@ align-items: center;
     animation:spin 4s linear infinite;
 }
 
+h2.tm-section-title:hover{
+	color: lightskyblue;
+}
