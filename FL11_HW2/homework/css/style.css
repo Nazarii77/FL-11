@@ -76,6 +76,7 @@
 	}	
 }
 
+@media screen {
 li:hover  .tm-section-title {
     background:  lightskyblue;
 }
@@ -224,8 +225,8 @@ h2 + p:first-of-type  {
 }
 
 .tm-content-box.flex-2-col {
-display: flex;
 flex-direction: row;
+display: flex;
 justify-content: center;
 align-items: center;
 }
@@ -243,4 +244,5 @@ h2.tm-section-title:hover{
 
 h2.tm-box-bg-title:hover{
 	color: white;
+}
 }
