@@ -1,0 +1,99 @@
+body {
+  background: #fff;
+  margin: 0; }
+
+main {
+  margin: 0 auto;
+  width: 960px; }
+
+.header-wrap {
+  background-image: url(../img/m-h-day.jpg);
+  background-repeat: no-repeat;
+  border-bottom-right-radius: 50% 25%;
+  height: 900px; }
+
+.header-wrap {
+  padding-left: 12em;
+  padding-right: 12em; }
+
+.landing-logo {
+  display: -webkit-inline-box; }
+
+.landing-logo > p {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 600;
+  font-size: 140%;
+  margin-left: 20px; }
+
+.landing-logo span {
+  font-size: 50%;
+  display: flex;
+  margin-left: 5px; }
+
+span::before {
+  content: '\A';
+  white-space: pre; }
+
+.header_heading {
+  font-size: 200%; }
+
+.landing-logo > img {
+  margin-block-start: 1.8em;
+  margin-block-end: 1em; }
+
+.header_heading, .header_text, .landing-logo p, .section_banner_heading, .section_text {
+  color: #2c2f3c; }
+
+.header_heading {
+  font-size: 500%;
+  max-width: 600px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 700; }
+
+.header_heading::after {
+  content: '';
+  display: block;
+  width: 335px;
+  height: 27px;
+  background: #14a0c7;
+  z-index: 5;
+  margin-top: -37px; }
+
+.header_text {
+  font-size: 120%;
+  max-width: 700px;
+  font-family: sans-serif; }
+
+.header_button {
+  background-color: #699900;
+  color: white;
+  border-width: 0px;
+  width: 100px;
+  border-radius: 2px;
+  height: 40px;
+  margin-top: 100px; }
+
+.section_banner_button {
+  background-color: #699900;
+  color: white;
+  border-width: 0px;
+  width: 100px;
+  border-radius: 2px;
+  height: 40px; }
+
+.section_text {
+  font-size: 200%;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 700;
+  text-align: center; }
+
+.section_text::after {
+  content: '';
+  display: block;
+  width: 150px;
+  height: 10px;
+  background: #14a0c7;
+  z-index: 5;
+  margin-top: -15px;
+  margin-left: 485px;
+  align-content: center; }
