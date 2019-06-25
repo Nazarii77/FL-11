@@ -1,13 +1,20 @@
-$contentBackground: #660;
+$contentBackground:  rgb(33, 35, 46);
 
 //font-family: 
 $sans-font: 'Source Sans Pro', sans-serif;
 $hindi-font:  'Hind', sans-serif;
 $fresca-font: 'Fresca', sans-serif;
 
-$back-image: src("img\m-h-night.jpg");
+$back-image: url(../img/m-h-night.jpg);
 
 $font-color: white;
 
 $button-color: rgb(227, 172, 0);
 
+$garadient: linear-gradient(to right, rgb(220, 161, 7), rgb(150, 50, 79));
+
+$section-card-background: rgb(59, 63, 80);
+
+$footer-background: rgb(59, 63, 80);
+
+$underline-color:rgb(255, 78, 51);

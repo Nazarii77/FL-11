@@ -1,5 +1,5 @@
 body {
-  background: #660;
+  background: #21232e;
   margin: 0; }
 
 main {
@@ -7,7 +7,7 @@ main {
   width: 960px; }
 
 .header-wrap {
-  background-image: src("imgm-h-night.jpg");
+  background-image: url(../img/m-h-night.jpg);
   background-repeat: no-repeat;
   border-bottom-right-radius: 50% 25%;
   height: 900px; }
@@ -55,7 +55,7 @@ span::before {
   display: block;
   width: 335px;
   height: 27px;
-  background: #14a0c7;
+  background: #ff4e33;
   z-index: 5;
   margin-top: -37px; }
 
@@ -99,7 +99,7 @@ span::before {
   display: block;
   width: 150px;
   height: 10px;
-  background: #14a0c7;
+  background: #ff4e33;
   z-index: 5;
   margin-top: -15px;
   margin-left: 485px;
@@ -110,7 +110,7 @@ span::before {
   justify-content: space-between; }
 
 .section_card {
-  background-color: #21232e;
+  background-color: #3b3f50;
   color: #bbbece;
   margin: 5px;
   padding: 15px;
@@ -132,7 +132,7 @@ span::before {
   display: inline-block;
   bottom: 13px;
   height: 8px;
-  background-color: #14a0c7;
+  background-color: #ff4e33;
   width: 100%;
   z-index: -1; }
 
@@ -144,7 +144,7 @@ span::before {
   text-align: center; }
 
 .section_banner {
-  background-image: linear-gradient(to right, #659510, #305ecf);
+  background-image: linear-gradient(to right, #dca107, #96324f);
   border-radius: 5px;
   display: flex;
   height: 120px;
@@ -169,7 +169,7 @@ span::before {
   margin-left: 150px; }
 
 .footer {
-  background-color: #21232e;
+  background-color: #3b3f50;
   height: 150px; }
 
 .footer-wrap {
@@ -194,7 +194,7 @@ span::before {
   display: block;
   width: 50px;
   height: 7px;
-  background: #14a0c7;
+  background: #ff4e33;
   z-index: 5;
   margin-top: -10px;
   margin-left: 95px;
