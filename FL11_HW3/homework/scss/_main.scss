@@ -12,6 +12,12 @@ main {
     background-repeat: no-repeat;
     border-bottom-right-radius: 50% 25%;
     height: 900px;
+    background-size: 100%;
+    background-position: center;
+    border-top-right-radius: 0em 0em;
+    border-top-left-radius: 0em 0em;
+    border-bottom-left-radius: 0em 0em;
+    border-bottom-right-radius: 50em 25em;
 }
 
 
@@ -243,3 +249,7 @@ span::before {
 .section_card_text ,  .header_text{
     font-family: $section-card-text-font;
 }
+
+
+
+ 

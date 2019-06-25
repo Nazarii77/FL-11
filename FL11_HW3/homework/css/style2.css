@@ -10,7 +10,13 @@ main {
   background-image: url(../img/m-h-night.jpg);
   background-repeat: no-repeat;
   border-bottom-right-radius: 50% 25%;
-  height: 900px; }
+  height: 900px;
+  background-size: 100%;
+  background-position: center;
+  border-top-right-radius: 0em 0em;
+  border-top-left-radius: 0em 0em;
+  border-bottom-left-radius: 0em 0em;
+  border-bottom-right-radius: 50em 25em; }
 
 .header-wrap {
   padding-left: 12em;
