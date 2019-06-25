@@ -79,7 +79,14 @@ span::before {
   border-width: 0px;
   width: 100px;
   border-radius: 2px;
-  height: 40px; }
+  height: 40px;
+  color: white;
+  border-width: 0px;
+  width: 100px;
+  border-radius: 2px;
+  height: 40px;
+  margin: 5%;
+  margin-left: 110px; }
 
 .section_text {
   font-size: 200%;
@@ -96,4 +103,99 @@ span::before {
   z-index: 5;
   margin-top: -15px;
   margin-left: 485px;
+  align-content: center; }
+
+.section_card_wrap {
+  display: flex;
+  justify-content: space-between; }
+
+.section_card {
+  background-color: #21232e;
+  color: #bbbece;
+  margin: 5px;
+  padding: 15px;
+  border-radius: 5px;
+  width: 33.33%;
+  z-index: -2; }
+
+.section_card_heading {
+  color: white;
+  text-align: center;
+  z-index: 100;
+  width: fit-content;
+  margin: auto;
+  margin-bottom: -20px; }
+
+.section_card_heading::after {
+  content: '';
+  position: relative;
+  display: inline-block;
+  bottom: 13px;
+  height: 8px;
+  background-color: #14a0c7;
+  width: 100%;
+  z-index: -1; }
+
+.section_card_img {
+  width: 100%;
+  border-radius: 5px; }
+
+.section_card_text {
+  text-align: center; }
+
+.section_banner {
+  background-image: linear-gradient(to right, #659510, #305ecf);
+  border-radius: 5px;
+  display: flex;
+  height: 120px;
+  margin-top: 120px;
+  z-index: 1;
+  margin-bottom: -50px;
+  position: relative;
+  margin-left: 90px;
+  margin-right: 90px; }
+
+.section_banner_heading {
+  color: white;
+  font-size: x-large;
+  font-weight: 900;
+  font-family: "Source Sans Pro", sans-serif; }
+
+.section_banner_text {
+  color: white;
+  opacity: 0.7; }
+
+.section_banner_text_wrap {
+  margin-left: 150px; }
+
+.footer {
+  background-color: #21232e;
+  height: 150px; }
+
+.footer-wrap {
+  display: flex;
+  color: #c0c3c4;
+  padding-top: 60px;
+  font-size: 85%; }
+
+.footer_logo, .footer_text, .footer-cr {
+  width: 33.33%;
+  text-align: center; }
+
+.footer_logo {
+  padding-left: 75px; }
+
+.footer_logo > p {
+  color: #c0c3c4;
+  font-weight: 400; }
+
+.section_banner_heading::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 7px;
+  background: #14a0c7;
+  z-index: 5;
+  margin-top: -10px;
+  margin-left: 95px;
   align-content: center; }
