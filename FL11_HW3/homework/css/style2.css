@@ -128,13 +128,14 @@ span::before {
   z-index: 100;
   width: fit-content;
   margin: auto;
-  margin-bottom: -20px; }
+  margin-bottom: -20px;
+  font-size: 140%; }
 
 .section_card_heading::after {
   content: '';
   position: relative;
   display: inline-block;
-  bottom: 13px;
+  bottom: 22px;
   height: 8px;
   background-color: #ff4e33;
   width: 100%;
@@ -199,3 +200,6 @@ span::before {
   margin-top: -10px;
   margin-left: 95px;
   align-content: center; }
+
+.section_card_text {
+  font-family: "Fresca", sans-serif; }

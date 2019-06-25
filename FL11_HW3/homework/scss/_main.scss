@@ -147,6 +147,7 @@ span::before {
     width: fit-content;
     margin: auto;
     margin-bottom: -20px;   
+    font-size: 140%;
 }
 
  
@@ -155,7 +156,7 @@ span::before {
     content: '';
     position: relative;
     display: inline-block;
-    bottom: 13px;
+    bottom: 22px;
     height: 8px;
     background-color: $underline-color;
     width: 100%;
@@ -239,3 +240,6 @@ span::before {
     align-content: center;
 }
 
+.section_card_text {
+    font-family: $section-card-text-font;
+}
