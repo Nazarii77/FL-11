@@ -240,6 +240,6 @@ span::before {
     align-content: center;
 }
 
-.section_card_text {
+.section_card_text ,  .header_text{
     font-family: $section-card-text-font;
 }

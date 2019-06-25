@@ -201,5 +201,5 @@ span::before {
   margin-left: 95px;
   align-content: center; }
 
-.section_card_text {
+.section_card_text, .header_text {
   font-family: "Fresca", sans-serif; }
