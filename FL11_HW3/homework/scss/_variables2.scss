@@ -18,3 +18,39 @@ $section-card-background: rgb(59, 63, 80);
 $footer-background: rgb(59, 63, 80);
 
 $underline-color:rgb(255, 78, 51);
+
+@mixin button_style {
+    background-color: $button-color;
+    color: white;    
+    border-width: 0px;
+    width: 100px;
+    border-radius: 2px;
+    height: 40px;
+}
+
+$section-card-text-color: rgb(187, 190, 206);
+
+
+$font-weights: (
+  small: 400,
+  medium: 600,
+  medium_big:700,
+  large: 900
+);
+ 
+$font-weights: (
+  small_font: 400,
+  medium_font: 600,
+  medium_big_font:700,
+  large_font: 900
+);
+  
+@function font($weight) {
+    @if map-has-key($font-weights, $weight) {
+      @return map-get($font-weights, $weight);
+    }
+   
+    @warn "Unknown `#{$key}` in $font-weights.";
+    @return null;
+  }
+   

@@ -26,7 +26,7 @@ main {
 
 .landing-logo > p {
     font-family: $sans-font;
-    font-weight: 600;
+    font-weight: font(medium_font);
     font-size: 140%;
     margin-left: 20px;
     
@@ -60,7 +60,7 @@ span::before {
     font-size: 500%;
     max-width: 600px;
     font-family: $sans-font;
-    font-weight: 700;
+    font-weight: font(medium_big_font);;
 }
 
 .header_heading::after{
@@ -80,15 +80,6 @@ span::before {
     font-family: sans-serif;
 }
 
-
-@mixin button_style {
-    background-color: $button-color;
-    color: white;    
-    border-width: 0px;
-    width: 100px;
-    border-radius: 2px;
-    height: 40px;
-}
 
 .header_button {
     @include button_style();
@@ -133,7 +124,7 @@ span::before {
 }
 .section_card {
     background-color: $section-card-background;
-    color: rgb(187, 190, 206);
+    color: $section-card-text-color;
     margin: 5px;
     padding: 15px;
     border-radius: 5px;
@@ -141,9 +132,16 @@ span::before {
     z-index: -2;
 }
 
+
+.section_banner_text{
+    color:  white;
+    opacity: 0.7;
+}
+ 
 .section_card_heading {
     // position: absolute;
-    color: white;
+    @extend .section_banner_text;
+    opacity: 1;
     text-align: center;
     z-index: 100;
     width: fit-content;
@@ -190,16 +188,13 @@ span::before {
 .section_banner_heading{
     color:  $font-color;; 
     font-size: x-large;
-    font-weight: 900;
+    font-weight: font(large_font);
     font-family: $sans-font;
 
 }
 
 
-.section_banner_text{
-    color:  white;
-    opacity: 0.7;
-}
+
 
 .section_banner_text_wrap {
     margin-left: 150px;
@@ -229,7 +224,7 @@ span::before {
 
 .footer_logo > p {
     color: rgb(192, 195, 196);
-    font-weight: 400;
+    font-weight: font(small_font);
 }
 
 .section_banner_heading::after {
