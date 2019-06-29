@@ -260,18 +260,7 @@ header::after {
     z-index: 1;
  }
 
-/* .like2 {
- 	position: relative;
-    top: 60px;
-    left: 1330px;
-    border-width: 2px;
-    border-color: white;
-    border-style: solid;
-    width: 50px;
-    height: 20px;
-    display: -webkit-box;
- }
-*/
+
  .center-button {
  	text-align: center;
  	display: block;
@@ -434,7 +423,6 @@ section {
 .blog-article-2 .like {
     padding-left: 3px;
     position: absolute;
-    /* top: 72%; */
     z-index: 5;
     border-color: white;
     border-style: solid;
