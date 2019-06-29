@@ -216,15 +216,19 @@ header::after {
 
 .blog-article-2 img {
 	display: block;
-	float: right;
-	margin:20px;
-} 
+    float: right;
+    margin: 20px;
+    width: 50%;
+}
+ 
 
 .article-text {
 	margin: 1em;
-	padding: 1em; 
-	text-align: justify;
-	height: 730px;
+    padding: 1em;
+    text-align: center;
+    height: 588px;
+    padding-top: 4%;
+    position: relative;
 }
 
 .article-text p {
