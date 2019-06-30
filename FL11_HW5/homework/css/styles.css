@@ -30,3 +30,96 @@ body {
 }
 
 /* Your styles go here */
+
+
+
+@media (max-width: 480px){
+
+
+  body {
+    background-color: #0b192f;
+  }
+  .menu {
+    background-color: var(--bg-footer-color);
+    padding: 10px;
+  }
+  .menu-hamburger {
+    width: 20px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+    position: relative;
+    left: 45%; 
+  }
+
+  .logo {
+    color: white;
+    position: relative;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: 200;
+    margin: 30px 0;
+  }
+  .red {
+    color: red;
+  }
+
+  article {
+    color: white;
+    
+  }
+
+  article h2 {
+    font-size: 3em;
+    font-weight: 200;
+    margin: 20px;
+  }
+
+  article p {
+    font-weight: 200;
+    opacity: 0.9;
+    margin: 20px;
+    padding-bottom: 20px;
+  }
+
+  article img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+  }
+
+  .date , .month  {
+    position: relative;
+    text-align: center;
+    opacity: 0.4;
+    font-weight: 200; 
+  }
+
+  .date {
+    font-size: 400%;
+  }
+
+  .month {
+    font-size: 225%;
+  }
+
+  .news {
+    background-color: white;
+  }
+
+  .news h2, .news p {
+    color: black;    
+    font-weight: 300;
+  }
+
+  .news h2   {
+    font-size: 150%;
+    opacity: 1;
+  }
+
+  .news p {
+    opacity: 0.9;
+  }
+
+
+}
