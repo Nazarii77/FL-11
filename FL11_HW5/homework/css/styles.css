@@ -29,6 +29,10 @@ body {
 	background: #2d95bb;
 }
  
+ .post:hover img {
+  opacity: 0.4;
+}
+
   body {
     background-color: #0b192f;
   }
@@ -499,9 +503,10 @@ body {
 
 
   .reverse-r h2,  .reverse-r p{
-       text-align: right;
-    margin-left: 37px;
+    text-align: right;
+    margin-left: 50px;
     margin-right: 20px;
   }
 
+ 
 }
