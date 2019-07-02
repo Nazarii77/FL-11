@@ -34,7 +34,7 @@ body {
 }
 
 .menu-right-desktop li:hover {
-  background-color: rgb(255,255,255, .4);
+  background-color: rgb(255,255,255, .1);
  height: 100%;
 }
 
