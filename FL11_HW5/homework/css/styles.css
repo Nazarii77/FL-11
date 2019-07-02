@@ -28,10 +28,7 @@ body {
 .post-5 {
 	background: #2d95bb;
 }
-
-/* Your styles go here */
-
-
+ 
   body {
     background-color: #0b192f;
   }
@@ -225,7 +222,7 @@ body {
   }
   .red {
     color: red;
-    font-weight: 200;
+    font-weight: 300;
   }
 
     .footer{
@@ -306,10 +303,13 @@ body {
   }
 
    .left-column article img {
-        background-size: contain;
-      display: block;
-      position: relative;
-      display: block; 
+    background-size: contain;
+    display: block;
+    position: relative;
+    display: block;
+    height: 33vw;
+    min-height: 330px;
+    width: 100%; 
    }
 
   .right-column {
@@ -401,12 +401,19 @@ body {
 
 
   .date , .month  {
-    position: relative;
-    text-align: center;
+    position: absolute;
+    top: 0px;
+    right: 0px;
     opacity: 0.4;
     font-weight: 200; 
+    margin-right: 10px; 
   }
 
+  .month {
+    top: 60px;
+  }
+
+ 
   .date {
     font-size: 400%;
   }
@@ -453,11 +460,41 @@ body {
     text-align: left;
   }
 
-  /* .post {
-    display: flex;
-  } */
+  
 
-  .inside-qrticel {
-    display: block;
+.inside-left-column {
+  float: left;
+ width: 50%;
   }
+
+  .inside-right-column {
+  float: right; 
+  width: 50%;
+  
+  }
+
+/* Clearfix (clear floats) */
+ .inside-article::after {
+  content: "";
+  clear: both;
+  display: table;
+  }
+
+  .inside-right-column p {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .inside-right-column  h2 {
+        margin-right: 23%;
+    line-height: 45px;
+  }
+
+  .left-column .post .inside-article .inside-left-column img:nth-child(even){
+        float: left;
+  }
+    .left-column .post .inside-article .inside-left-column  img:nth-child(odd){
+        float: right;
+  }
+
 }
