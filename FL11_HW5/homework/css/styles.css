@@ -472,8 +472,7 @@ body {
   width: 50%;
   
   }
-
-/* Clearfix (clear floats) */
+ 
  .inside-article::after {
   content: "";
   clear: both;
@@ -490,11 +489,19 @@ body {
     line-height: 45px;
   }
 
-  .left-column .post .inside-article .inside-left-column img:nth-child(even){
-        float: left;
+  .reverse{
+    float: right;
   }
-    .left-column .post .inside-article .inside-left-column  img:nth-child(odd){
-        float: right;
+
+  .reverse-r > .date, .reverse-r > .month{
+          left: 0px;
+  }
+
+
+  .reverse-r h2,  .reverse-r p{
+       text-align: right;
+    margin-left: 37px;
+    margin-right: 20px;
   }
 
 }
