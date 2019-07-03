@@ -1,7 +1,6 @@
-// Your code goes here<script>
 let a1,a2,b1,b2,c1,c2 = 0;
 let c,xa,xb = 0;
-let arr = prompt('Enter your numbers (separate by comma): a1,a2,b1,b2,c1,c2').split(',')
+let arr = prompt('Enter your numbers (dots position separate by comma): a1,a2,b1,b2,c1,c2').split(',')
 
 a1=parseInt(arr[0]); 
 a2=parseInt(arr[1]);
@@ -19,10 +18,3 @@ if ( c1 ===(a1+b1)/2 ) {
 } else{
 	console.log('false');
 }
-
-
-
-
-
-
- 
