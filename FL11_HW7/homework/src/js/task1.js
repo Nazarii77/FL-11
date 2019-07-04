@@ -1,4 +1,4 @@
-var  input = '';
+var input = '';
 let password = '';
 const newpassword = '';
 
@@ -8,7 +8,7 @@ if (input === null) {
     alert('Canceled.');
 } else if (input.length < 6) {
     alert('I don`t know any emails having name length less than 6 symbols');
-} else if (input === "user@gmail.com") {
+} else if (input === 'user@gmail.com') {
     password = prompt('Enter your password');
     if (password === 'UserPass') {
         let sConfirmation = confirm('Do you want to change your password?');
@@ -41,7 +41,7 @@ if (input === null) {
     }
 } else if (input === 'admin@gmail.com') {
     password = prompt('Enter your password');
-    if (password === "AdminPass") {
+    if (password === 'AdminPass') {
         let sConfirmation = confirm('Do you want to change your password?');
         if (sConfirmation) {
             let olduserpass = prompt('Enter your OLD password');
@@ -66,5 +66,5 @@ if (input === null) {
         alert('Wrong password');
     }
 } else {
-	    alert('I don’t know you');
+	alert('I don’t know you');
 }
