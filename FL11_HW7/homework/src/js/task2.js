@@ -35,11 +35,13 @@ while (wantstoplayagain) {
                             possibleprize = thirdprice * prizemultiplier;
                             break;
                         default:
-                            console.log("Out of range for possible");
+                            console.log('Out of range for possible');
                             break;
                     }
 
-                    entered = Number(prompt('Choose a roulette pockett number from ' + lowrandom + ' to ' + highrandom + '  \nAttempts left: ' + attemptsleft + ' \nTotal prize: ' + prize + '$ \nPossible prize on current attempt: ' + possibleprize + '$'));
+                    entered = Number(prompt('Choose a roulette pockett number from ' + lowrandom + ' to ' 
+					+ highrandom + '  \nAttempts left: ' + attemptsleft 
+					+ ' \nTotal prize: ' + prize + '$ \nPossible prize on current attempt: ' + possibleprize + '$'));
                     attemptsleft = attemptsleft - 1;
                     if (random1 === entered) {
                         prize = prize + possibleprize;
@@ -53,7 +55,8 @@ while (wantstoplayagain) {
                 wantstocontinue = false;
                 sConfirmation = true;
             } else {
-                wantstocontinue = confirm('Congratulation, you won!   Your prize is: ' + prize + ' $. Do you want to continue?');
+                wantstocontinue = confirm('Congratulation, you won!   Your prize is: ' + prize 
+            + ' $. Do you want to continue?');
                 if (wantstocontinue) {
                     alreadywon = false;
                     highrandom = highrandom + 4;
