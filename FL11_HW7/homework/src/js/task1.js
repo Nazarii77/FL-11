@@ -3,12 +3,14 @@ let inputpassword = '';
 let newpassword = '';
 let sConfirmation = '';
 let olduserpass = '';
+let minlengthemail = 6;
+let minpasslength =5;
 
 inputEmail = prompt('Enter your email here');
 
 if (inputEmail === null) {
     alert('Canceled.');
-} else if (inputEmail.length < 6) {
+} else if (inputEmail.length < minlengthemail) {
     alert('I don`t know any emails having name length less than 6 symbols');
 } else if (inputEmail === 'user@gmail.com') {
     inputpassword = prompt('Enter your password');
@@ -18,7 +20,7 @@ if (inputEmail === null) {
             olduserpass = prompt('Enter your OLD password');
             if (inputpassword === olduserpass) {
                 newpassword = prompt('Enter your NEW password');
-                if (newpassword.length < 5) {
+                if (newpassword.length < minpasslength) {
                     alert('It’s too short password. Sorry.');
                 } else {
                     if (newpassword === prompt('REENTER your NEW password')) {
@@ -49,7 +51,7 @@ if (inputEmail === null) {
             olduserpass = prompt('Enter your OLD password');
             if (inputpassword === olduserpass) {
                 newpassword = prompt('Enter your NEW password');
-                if (newpassword.length < 5) {
+                if (newpassword.length < minpasslength) {
                     alert('It’s too short password. Sorry.');
                 } else {
                     if (newpassword === prompt('REENTER your NEW password')) {
