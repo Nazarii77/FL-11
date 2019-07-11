@@ -1,11 +1,13 @@
+let initnumber;
+
 function addOne(x) {
     return x + 1;
 }
 
- function pipe() {
-  let initnumber = arguments[0];
+ function pipe(receivenum,receivefunc) {
+    initnumber = receivenum;
     for (var j = 1; j < arguments.length; j++) {
-        initnumber = addOne(initnumber);
+        initnumber = receivefunc(initnumber);
     }
     return initnumber;
  }
