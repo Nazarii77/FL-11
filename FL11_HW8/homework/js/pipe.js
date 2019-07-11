@@ -1,18 +1,19 @@
 function addOne(x) {
-  return x + 1;
+    return x + 1;
 }
 
-const pipe = (op1, op2) => {
-  // return a function that bundles all
-  // operations into a single operation
-  return (arg) => {
-     // first we invoke op1 with the passed
-    // arg and save its output
-   const result1 = op1(arg);
-   // invoke op2 by calling it with
-   // saved output of the op1 and return the result of op2
-   return op2(result1);
-  }
+function pipe() {
+    b.apply(this, arguments);
+}
+
+function b() {
+    let initnumber = arguments[0];
+    //console.log(number);
+    for (var j = 1; j < arguments.length; j++) {
+        initnumber = addOne(initnumber);
+    }
+    console.log(initnumber);
+    return initnumber;
 }
 
 pipe(1, addOne); //=> 2
