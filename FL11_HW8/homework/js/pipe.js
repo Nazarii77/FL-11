@@ -6,7 +6,7 @@ function addOne(x) {
 
  function pipe(receivenum, ...args) {
     initnumber = receivenum;
-    for (var j = 0; j+1 < arguments.length; j++) {
+    for (var j = 0; j < arguments.length-1; j++) {
         initnumber = args[j](initnumber);
     }
     return initnumber;
