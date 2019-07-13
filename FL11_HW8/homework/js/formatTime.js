@@ -9,11 +9,9 @@ function formatTime(minutes) {
         formatteddays = parseInt(formattedhours / 24);
         formattedhours = formattedhours - formatteddays * 24;
     }
-
     return formatteddays + ' day(s) ' + formattedhours + ' hour(s) ' + formattedminutes + ' minutes';
 }
 
-console.log(formatTime(11166));
 
 formatTime(120); //=> 0 day(s) 2 hour(s) 0 minute(s).
 formatTime(59); //=> 0 day(s) 0 hour(s) 59 minute(s).
