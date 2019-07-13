@@ -61,11 +61,41 @@ findTypes(null, 5, 5, 5, 'hello') // returns {“object”:1, “number”:1, �
 
 //2
 function executeforEach(array,func){
-    for (let j = 0; j < array.length; j++) {
-        func(array[j]); 
-    }
+      for (var j = 0; j < array.length; j++) {
+        array[j] = func(array[j]); 
+        
+    }  
+       for ( j = 0; j < array.length; j++) {
+        return array; 
+    }  
 }
 
-executeforEach([1,2,3], function(el) {
+  executeforEach([1,2,3], function(el) {
  console.log(el) 
-}) // logs 1 2 3
+}); // logs 1 2 3
+
+function mapArray(array,func){ 
+        console.log(executeforEach(array,func));
+}
+ mapArray([2, 5, 8], function(el) {
+ return el + 3 
+}); // returns [5, 8, 11]
+
+
+
+
+ //3
+ function filterArray(array,func){
+         let arrayconfirm = [...array];
+         arrayconfirm = executeforEach(arrayconfirm,func);
+ 
+    for ( let j = 0; j < array.length; j++) {
+      if (!arrayconfirm[j]) {
+          array.splice(j,1);
+      }
+    }      
+    console.log(array);
+ }
+ filterArray([2, 5, 8], function(el) {
+ return el > 3 
+}) // returns [5, 8]
