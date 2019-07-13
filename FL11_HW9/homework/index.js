@@ -74,23 +74,14 @@ function executeforEach(array,func){
  console.log(el) 
 }); // logs 1 2 3
 
-function mapArray(array,func){ 
-        console.log(executeforEach(array,func));
-}
- mapArray([2, 5, 8], function(el) {
- return el + 3 
-}); // returns [5, 8, 11]
-
-
 
 //3
-
-
-
 function mapArray(array,func){ 
         console.log(executeforEach(array,func));
 }
-mapArray([2, 5, 8], function(el) { return el + 3 }); // returns [5, 8, 11]
+mapArray([2, 5, 8], function(el) {
+ return el + 3 
+}); // returns [5, 8, 11]
 
 
 
@@ -114,18 +105,18 @@ mapArray([2, 5, 8], function(el) { return el + 3 }); // returns [5, 8, 11]
 
 //5 
 function showFormattedDate (date){
-    var namemonth  = [
-    "Jan", "Feb", "Mar",
-    "Apr", "May", "Jun", "Jul",
-    "Aug", "Sep", "Oct",
-    "Nov", "Dec"
+    let namemonth = [
+    'Jan', 'Feb', 'Mar',
+    'Apr', 'May', 'Jun', 'Jul',
+    'Aug', 'Sep', 'Oct',
+    'Nov', 'Dec'
   ];
 
-  var day = date.getDate();
-  var IndexOfMonth = date.getMonth();
-  var year = date.getFullYear();
-  console.log('Date: '  + namemonth[IndexOfMonth] +' '+ day + ' ' + year);
-  return 'Date: '  + namemonth[IndexOfMonth] + day + ' ' + ' ' + year;
+  let day = date.getDate();
+  let IndexOfMonth = date.getMonth();
+  let year = date.getFullYear();
+  console.log('Date: ' + namemonth[IndexOfMonth] +' '+ day + ' ' + year);
+  return 'Date: ' + namemonth[IndexOfMonth] + day + ' ' + ' ' + year;
 }
 
 
