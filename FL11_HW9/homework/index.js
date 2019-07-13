@@ -116,7 +116,7 @@ function showFormattedDate (date){
   let IndexOfMonth = date.getMonth();
   let year = date.getFullYear();
   console.log('Date: ' + namemonth[IndexOfMonth] +' '+ day + ' ' + year);
-  return 'Date: ' + namemonth[IndexOfMonth] + day + ' ' + ' ' + year;
+  return 'Date: ' + namemonth[IndexOfMonth] +' '+ day + ' ' + ' ' + year;
 }
 
 
