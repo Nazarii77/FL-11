@@ -123,3 +123,6 @@ function showFormattedDate (date){
 showFormattedDate(new Date('2019-01-27T01:10:00')) 
 // returns ‘Date: Jan 27 2019’
 // every month should be showed as 3 letters (e.g. Feb, Apr or Dec)
+
+
+//6
