@@ -126,3 +126,19 @@ showFormattedDate(new Date('2019-01-27T01:10:00'))
 
 
 //6
+
+function canConvertToDate (date){
+  try {
+     new Date(date).toISOString();
+     console.log(true);
+     return true;
+  } catch(err) {
+     console.log(false);
+      return false;
+  }
+}
+
+canConvertToDate('2016-13-18T00:00:00'); // false
+canConvertToDate('2016-03-18T00:00:00'); // true
+
+//7
