@@ -83,8 +83,18 @@ function mapArray(array,func){
 
 
 
+//3
 
- //3
+
+
+function mapArray(array,func){ 
+        console.log(executeforEach(array,func));
+}
+mapArray([2, 5, 8], function(el) { return el + 3 }); // returns [5, 8, 11]
+
+
+
+ //4
  function filterArray(array,func){
          let arrayconfirm = [...array];
          arrayconfirm = executeforEach(arrayconfirm,func);
@@ -99,3 +109,26 @@ function mapArray(array,func){
  filterArray([2, 5, 8], function(el) {
  return el > 3 
 }) // returns [5, 8]
+
+
+
+//5 
+function showFormattedDate (date){
+    var namemonth  = [
+    "Jan", "Feb", "Mar",
+    "Apr", "May", "Jun", "Jul",
+    "Aug", "Sep", "Oct",
+    "Nov", "Dec"
+  ];
+
+  var day = date.getDate();
+  var IndexOfMonth = date.getMonth();
+  var year = date.getFullYear();
+  console.log('Date: '  + namemonth[IndexOfMonth] +' '+ day + ' ' + year);
+  return 'Date: '  + namemonth[IndexOfMonth] + day + ' ' + ' ' + year;
+}
+
+
+showFormattedDate(new Date('2019-01-27T01:10:00')) 
+// returns ‘Date: Jan 27 2019’
+// every month should be showed as 3 letters (e.g. Feb, Apr or Dec)
