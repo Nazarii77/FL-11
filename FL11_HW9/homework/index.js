@@ -120,9 +120,8 @@ function showFormattedDate (date){
 }
 
 
-showFormattedDate(new Date('2019-01-27T01:10:00')) 
-// returns ‘Date: Jan 27 2019’
-// every month should be showed as 3 letters (e.g. Feb, Apr or Dec)
+showFormattedDate(new Date('2019-01-27T01:10:00')) // returns ‘Date: Jan 27 2019’
+
 
 
 //6
@@ -217,7 +216,12 @@ getAmountOfAdultPeople(data) // returns 3;
 //9
 
 function keys (obj) {
-  console.log(Object.keys(obj)); // ["a", "b", "c"]
+//  console.log(Object.keys(obj)); //not allowed	
+  let outputarray = [];
+    for (let prop in obj) {
+   outputarray.push( prop );
+  }
+  console.log(outputarray);
 }
 
 keys({keyOne: 1, keyTwo: 2, keyThree: 3}) // returns [“keyOne”, “keyTwo”, “keyThree”]
