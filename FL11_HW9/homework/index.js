@@ -142,3 +142,95 @@ canConvertToDate('2016-13-18T00:00:00'); // false
 canConvertToDate('2016-03-18T00:00:00'); // true
 
 //7
+
+var second = 1000;//miliseconds
+var minute = 60*second;
+var hour =60*minute;
+var day = 24*hour;
+
+function daysBetween(firstdate, seconddate){
+  let daysdiff = Math.round((seconddate-firstdate)/day);
+  console.log(daysdiff);    
+    return daysdiff ;
+ 
+}
+
+daysBetween(new Date('2016-03-18T00:00:00'), new Date('2016-04-19T00:00:00')) // 32
+
+
+//8
+
+function getAmountOfAdultPeople (data) {
+  let numofadults = 0;
+  for (let i=0; i<data.length; i++) {
+   let birth = new Date(data[i][' birthday ']);
+   showFormattedDate(birth);
+    let years = daysBetween( birth,new Date());
+    years = years / 365 ;
+    if (years >= 18){
+      numofadults++;  
+    } 
+  }
+  console.log(numofadults);
+  return numofadults;
+}
+ 
+ 
+let data = [
+  {
+    '_id': '5b5e3168c6bf40f2c1235cd6',
+    'index': 0,
+    ' birthday ': '2016-03-18T00:00:00',
+    'eyeColor': 'green',
+    'name': 'Stein',
+    'favoriteFruit': 'apple'
+  },
+  {
+    '_id': '5b5e3168e328c0d72e4f27d8',
+    'index': 1,
+    ' birthday ': '1991-02-11T00:00:00',
+    'eyeColor': 'blue',
+    'name': 'Cortez',
+    'favoriteFruit': 'strawberry'
+  },
+  {
+    '_id': '5b5e3168cc79132b631c666a',
+    'index': 2,
+    ' birthday ': '1984-04-17T00:00:00',
+    'eyeColor': 'blue',
+    'name': 'Suzette',
+    'favoriteFruit': 'apple'
+  },
+  {
+    '_id': '5b5e31682093adcc6cd0dde5',
+    'index': 3,
+    ' birthday ': '1994-04-17T00:00:00',
+    'eyeColor': 'green',
+    'name': 'George',
+    'favoriteFruit': 'banana'
+  }
+];
+
+ 
+ //See input data example in CODE section
+getAmountOfAdultPeople(data) // returns 3;
+
+//9
+
+function keys (obj) {
+  console.log(Object.keys(obj)); // ["a", "b", "c"]
+}
+
+keys({keyOne: 1, keyTwo: 2, keyThree: 3}) // returns [“keyOne”, “keyTwo”, “keyThree”]
+
+//10
+
+
+function values (obj) {
+  var outputarray = [];
+    for (var prop in obj) {
+   outputarray.push(obj[prop]);
+  }
+  console.log(outputarray);
+}
+values({keyOne: 1, keyTwo: 2, keyThree: 3}) // returns [1, 2, 3]
