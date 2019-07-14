@@ -211,8 +211,7 @@ let data = [
   }
 ];
 
- 
- //See input data example in CODE section
+
 getAmountOfAdultPeople(data) // returns 3;
 
 //9
@@ -232,5 +231,6 @@ function values (obj) {
   outputarray.push(obj[prop]);
   }
   console.log(outputarray);
+  return outputarray;
 }
 values({keyOne: 1, keyTwo: 2, keyThree: 3}) // returns [1, 2, 3]
