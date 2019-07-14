@@ -16,7 +16,7 @@ getNumbers('string'); // returns []
 getNumbers('n1um3ber95'); // returns [1,3,9,5]
 
 //1
-var obj = {
+let obj = {
     string: 0,
     object: 0,
     'undefined': 0,
@@ -57,15 +57,15 @@ function findTypes(...args) {
 }
 
 findTypes('number') // returns {“string”:1} 
-findTypes(null, 5, 5, 5, 'hello') // returns {“object”:1, “number”:1, “string”:1}
+findTypes(null, 5, 'hello') // returns {“object”:1, “number”:1, “string”:1}
 
 //2
 function executeforEach(array,func){
-      for (var j = 0; j < array.length; j++) {
+      for (let j = 0; j < array.length; j++) {
         array[j] = func(array[j]); 
         
     }  
-       for ( j = 0; j < array.length; j++) {
+       for (let j = 0; j < array.length; j++) {
         return array; 
     }  
 }
@@ -143,10 +143,10 @@ canConvertToDate('2016-03-18T00:00:00'); // true
 
 //7
 
-var second = 1000;//miliseconds
-var minute = 60*second;
-var hour =60*minute;
-var day = 24*hour;
+let second = 1000;//miliseconds
+let minute = 60*second;
+let hour =60*minute;
+let day = 24*hour;
 
 function daysBetween(firstdate, seconddate){
   let daysdiff = Math.round((seconddate-firstdate)/day);
@@ -227,9 +227,9 @@ keys({keyOne: 1, keyTwo: 2, keyThree: 3}) // returns [“keyOne”, “keyTwo”
 
 
 function values (obj) {
-  var outputarray = [];
-    for (var prop in obj) {
-   outputarray.push(obj[prop]);
+  let outputarray = [];
+    for (let prop in obj) {
+  outputarray.push(obj[prop]);
   }
   console.log(outputarray);
 }
