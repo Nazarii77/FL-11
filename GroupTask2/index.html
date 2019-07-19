@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>GroupTask2 FL-11</title>
+	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+	<main class="main">
+		<section class="shape" id="parallelogram">
+			<div class="shape-img-wrapper">
+				
+			</div>
+
+			<div class="shape-info">
+				<div class="inputs-wrapper">
+					<label>
+						A: <input class="user-input length-input" type="number">
+					</label>
+					<label>
+						B: <input class="user-input length-input" type="number">
+					</label>
+					<label>
+						angle: <input class="user-input angle-input" type="number">
+					</label>
+				</div>
+
+				<div class="outputs-wrapper">
+					<p class="output-label">Area: <span class="output">-</span></p>
+					<p class="output-label">h: <span class="output">-</span></p>
+				</div>
+			</div>
+		</section>
+		<hr>
+	
+		<section class="shape" id="circle">
+			<div class="shape-img-wrapper"></div>
+
+			<div class="shape-info">
+				<div class="inputs-wrapper">
+					<label>
+						R: <input class="user-input length-input" type="number">
+					</label>
+				</div>
+
+				<div class="outputs-wrapper">
+					<p class="output-label">Area: <span class="output">-</span></p>
+					<p class="output-label">L: <span class="output">-</span></p>
+				</div>				
+			</div>
+		</section>
+		<hr>
+
+		<section class="shape" id="ellipse">
+			<div class="shape-img-wrapper"></div>
+
+			<div class="shape-info">
+				<div class="inputs-wrapper">
+					<label>
+						Horizontal R: <input class="user-input length-input" type="number">
+					</label>
+					<label>
+						Vertical R: <input class="user-input length-input" type="number">
+					</label>
+				</div>
+
+				<div class="outputs-wrapper">
+					<p class="output-label">Area: <span class="output">-</span></p>
+					<p class="output-label">L: <span class="output">-</span></p>
+				</div>
+			</div>
+		</section>
+		<hr>
+
+		<section class="shape" id="square">
+			<div class="shape-img-wrapper"></div>
+
+			<div class="shape-info">
+				<div class="inputs-wrapper">
+					<label>
+						A: <input class="user-input length-input" type="number">
+					</label>
+				</div>
+
+				<div class="outputs-wrapper">
+					<p class="output-label">Diagonal: <span class="output">-</span></p>
+					<p class="output-label">Area: <span class="output">-</span></p>
+				</div>
+			</div>
+		</section>
+		<hr>
+		
+		<section class="shape" id="rectangle">
+			<div class="shape-img-wrapper"></div>
+
+			<div class="shape-info">
+				<div class="inputs-wrapper">
+					<label>
+						A: <input class="user-input length-input" type="number">
+					</label>
+					<label>
+						B: <input class="user-input length-input" type="number">
+					</label>
+				</div>
+
+				<div class="outputs-wrapper">
+					<p class="output-label">Diagonal: <span class="output">-</span></p>
+					<p class="output-label">Area: <span class="output">-</span></p>
+				</div>
+			</div>
+		</section>
+		<hr>
+
+		<section class="shape" id="triangle">
+			<div class="shape-img-wrapper"></div>
+
+			<div class="shape-info">
+				<div class="inputs-wrapper">
+					<label>
+						A: <input class="user-input length-input" type="number">
+					</label>
+					<label>
+						B: <input class="user-input length-input" type="number">
+					</label>
+				</div>
+
+				<div class="outputs-wrapper">
+					<div class="row">
+						<p class="output-label">a: <span class="output">-</span></p>
+						<p class="output-label">b: <span class="output">-</span></p>
+						<p class="output-label">c: <span class="output">-</span></p>
+						
+					</div>
+					<div class="row">
+						<p class="output-label">&alpha;: <span class="output">-</span></p>
+						<p class="output-label">&beta;: <span class="output">-</span></p>
+						<p class="output-label">&gamma;: <span class="output">-</span></p>
+						
+					</div>
+					<div class="row">
+						<p class="output-label">Area: <span class="output">-</span></p>
+						<p class="output-label">h: <span class="output">-</span></p>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer class="footer">
+		<label>
+			Instant calculation <input type="checkbox" id="instant-calc-checkbox">
+		</label>
+
+		<button class="calc-btn" id="calc-btn">Calculate</button>
+	</footer>
+
+	<script src="app.js"></script>
+</body>
+</html>

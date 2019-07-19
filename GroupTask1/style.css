@@ -1,0 +1,561 @@
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.wrapper {
+    color: #ffffff;
+    background-color: orange;
+    height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper h1 {
+    font-size: 30px;
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+.animations {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 380px;
+}
+
+.animations > div {
+    margin: 15px;
+    vertical-align: bottom;
+}
+
+/* First */
+.first_animation {
+    position: relative;
+    text-indent: 25px;
+}
+
+.first_animation div {
+    position: absolute;
+    top: 0;
+    height: 15px;
+    width: 15px;
+    border-radius: 100%;
+    background-color: #ffffff;
+    animation: jump 1s linear infinite;
+}
+
+/* Second */
+.second_animation {
+    position: relative;
+    width: 60px;
+    height: 60px;
+}
+
+.second_animation div {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border: 2px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.9);
+    animation: loader 1s ease-out infinite;
+}
+
+.second_animation div:nth-child(1) {
+    animation-delay: 0s;
+    top: 29px;
+    left: 53px;
+}
+
+.second_animation div:nth-child(2) {
+    animation-delay: -0.1s;
+    top: 18px;
+    left: 50px;
+}
+
+.second_animation div:nth-child(3) {
+    animation-delay: -0.2s;
+    top: 9px;
+    left: 41px;
+}
+
+.second_animation div:nth-child(4) {
+    animation-delay: -0.3s;
+    top: 6px;
+    left: 29px;
+}
+
+.second_animation div:nth-child(5) {
+    animation-delay: -0.4s;
+    top: 9px;
+    left: 18px;
+}
+
+.second_animation div:nth-child(6) {
+    animation-delay: -0.5s;
+    top: 18px;
+    left: 9px;
+}
+
+.second_animation div:nth-child(7) {
+    animation-delay: -0.6s;
+    top: 29px;
+    left: 6px;
+}
+
+.second_animation div:nth-child(8) {
+    animation-delay: -0.7s;
+    top: 41px;
+    left: 9px;
+}
+
+.second_animation div:nth-child(9) {
+    animation-delay: -0.8s;
+    top: 50px;
+    left: 18px;
+}
+
+.second_animation div:nth-child(10) {
+    animation-delay: -0.9s;
+    top: 53px;
+    left: 29px;
+}
+
+.second_animation div:nth-child(11) {
+    animation-delay: -1s;
+    top: 50px;
+    left: 41px;
+}
+
+.second_animation div:nth-child(12) {
+    animation-delay: -1.1s;
+    top: 41px;
+    left: 50px;
+}
+
+/* Third */
+.third_animation {
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+
+.circle_1, 
+.circle_2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #ffffff;
+    opacity: 0.6;
+    top: 0;
+    left: 0;
+    animation: bounce 2.0s infinite ease-in-out;
+}
+
+.circle_2 {
+    animation-delay: -1.0s;
+}
+
+/* Fourth */
+.fourth_animation {
+    position: relative;
+    width: 90px;
+    height: 50px;
+}
+
+.jumping_bar {
+    position: absolute;
+    bottom: 0;
+    width: 10px;
+    height: 100%;
+    background: #fff;
+    transform-origin: center bottom;
+    box-shadow: 1px 1px 0 rgba(0,0,0,.2);
+} 
+
+.jumping_bar:nth-child(1) {
+    left: 0;
+    transform: scale(1,2);
+    animation: jump1 4s infinite;
+}
+
+.jumping_bar:nth-child(2) {
+    left: 15px;
+    transform: scale(1,4);
+    animation: jump2 4s infinite;
+}
+
+.jumping_bar:nth-child(3) {
+    left: 30px;
+    transform: scale(1,6);
+    animation: jump3 4s infinite;
+}
+
+.jumping_bar:nth-child(4) {
+    left: 45px;
+    transform: scale(1,8);
+    animation: jump4 4s infinite;
+}
+
+.jumping_bar:nth-child(5) {
+    left: 60px;
+    transform: scale(2);
+    animation: jump5 4s infinite;
+}
+
+.jumping_ball {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 100%;
+    animation: ball 4s infinite;
+}
+
+/* Fifth */
+.fifth_animation {
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+
+.fifth_animation div {
+    margin-top: -10px;
+    position: absolute;
+    top: 100%;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #fff;
+}
+
+.fifth_animation div:nth-child(1) {
+    left: 6px;
+    animation: fifth_animation1 0.7s infinite;
+}
+
+.fifth_animation div:nth-child(2) {
+    left: 6px;
+    animation: fifth_animation2 0.7s infinite;
+}
+
+.fifth_animation div:nth-child(3) {
+    left: 26px;
+    animation: fifth_animation2 0.7s infinite;
+}
+
+.fifth_animation div:nth-child(4) {
+    left: 45px;
+    animation: fifth_animation3 0.7s infinite;
+}
+
+/* Sixth */
+.sixth_animation {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    animation: rotate 2.0s infinite linear;
+}
+
+.sixth_circle1, 
+.sixth_circle2 {
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    background-color: #ffffff;
+    border-radius: 100%;
+    animation: bounce 2.0s infinite ease-in-out;
+}
+
+.sixth_circle2 {
+    top: auto;
+    bottom: 0;
+    animation-delay: -1.0s;
+}
+
+@keyframes jump {
+    0% {
+        top: -100%;
+    }
+
+    10% {
+        top: -70%;
+    }
+
+    20% {
+        top: -60%;
+    }
+
+    40% {
+        top: 20%;
+        transform: scale(1);
+        border-radius: 100%;
+    }
+
+    45% {
+        top: 30%;
+        transform: scale(1.8, 0.2);
+        border-bottom-left-radius: 20%;
+        border-bottom-right-radius: 20%;
+    }
+
+    60% {
+        transform: scale(1);
+        border-radius: 100%;
+    }
+
+    70% {
+        top: -70%;
+        transform: scale(1);
+    }
+
+    90% {
+        transform: scale(1, 1.2);
+    }
+
+    100% {
+        top: -100%;
+    }
+}
+
+@keyframes bounce {
+    0%, 
+    100% { 
+        transform: scale(0);
+    } 
+    
+    50% { 
+        transform: scale(1);
+    }
+}
+
+@keyframes rotate {
+    100% { 
+        transform: rotate(360deg); 
+    }
+}
+
+@keyframes ball {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    5% {
+        transform: translate(8px, -14px);
+    }
+
+    10% {
+        transform: translate(15px, -10px);
+    }
+
+    17% {
+        transform: translate(23px, -24px);
+    }
+
+    20% {
+        transform: translate(30px, -20px);
+    }
+
+    27% {
+        transform: translate(38px, -34px);
+    }
+
+    30% {
+        transform: translate(45px, -30px);
+    }
+
+    37% {
+        transform: translate(53px, -44px);
+    }
+
+    40% {
+        transform: translate(60px, -40px);
+    }
+
+    50% {
+        transform: translate(60px, 0);
+    }
+
+    57% {
+        transform: translate(53px, -14px);
+    }
+
+    60% {
+        transform: translate(45px, -10px);
+    }
+
+    67% {
+        transform: translate(37px, -24px);
+    }
+
+    70% {
+        transform: translate(30px, -20px);
+    }
+
+    77% {
+        transform: translate(22px, -34px);
+    }
+    
+    80% {
+        transform: translate(15px, -30px);
+    }
+
+    87% {
+        transform: translate(7px, -44px);
+    }
+
+    90% {
+        transform: translate(0, -40px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+  
+@keyframes jump1 { 
+    0% {
+        transform: scale(1, .2);
+    }
+
+    40% {
+        transform: scale(1, .2);
+    }
+
+    50% {
+        transform: scale(1, 1);
+    }
+
+    90% {
+        transform: scale(1, 1);
+    }
+
+    100% {
+        transform: scale(1, .2);
+    }
+}
+  
+@keyframes jump2 { 
+    0% {
+        transform: scale(1, .4);
+    }
+
+    40% {
+        transform: scale(1, .4);
+    }
+
+    50% {
+        transform: scale(1, .8);
+    }
+
+    90% {
+        transform: scale(1, .8);
+    }
+
+    100% {
+        transform: scale(1, .4);
+    }
+}
+
+@keyframes jump3 { 
+    0% {
+        transform: scale(1, .6);
+    }
+
+    100% {
+        transform: scale(1, .6);
+    }
+}
+
+@keyframes jump4 { 
+    0% {
+        transform: scale(1, .8);
+    }
+
+    40% {
+        transform: scale(1, .8);
+    }
+
+    50% {
+        transform: scale(1, .4);
+    }
+
+    90% {
+        transform: scale(1, .4);
+    }
+
+    100% {
+        transform: scale(1, .8);
+    }
+}
+
+@keyframes jump5 { 
+    0% {
+        transform: scale(1, 1);
+    }
+
+    40% {
+        transform: scale(1, 1);
+    }
+
+    50% {
+        transform: scale(1, .2);
+    }
+
+    90% {
+        transform: scale(1, .2);
+    }
+
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+@keyframes loader {
+    0%,
+    100% {
+        transform: scale(0.5);
+    }
+
+    50% {
+        border-color: #f7930154;
+        transform: scale(1);
+    }
+}
+
+@keyframes fifth_animation1 {
+    0% {
+      transform: scale(0);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+}
+
+@keyframes fifth_animation2 {
+    0% {
+      transform: translate(0, 0);
+    }
+
+    100% {
+      transform: translate(19px, 0);
+    }
+}
+
+@keyframes fifth_animation3 {
+    0% {
+      transform: scale(1);
+    }
+
+    100% {
+      transform: scale(0);
+    }
+}
