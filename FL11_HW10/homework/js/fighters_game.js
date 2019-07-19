@@ -2,7 +2,7 @@
        let loses = 0;
        let wins = 0;
        let currenthp = input.hp;
-       let maxhp = 100;
+       let maxhp = input.hp;
        let minhp = 0;
        return {
            getName: () => input.name,
