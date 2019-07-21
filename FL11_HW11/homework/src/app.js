@@ -45,7 +45,7 @@ document.getElementById('todoInput').addEventListener('keyup', function() {
   i.appendChild(t3); 
   li.appendChild(i);
 
-  if (inputValue != '') {
+  if (inputValue !== '') {
     document.getElementById('mylist').appendChild(li);
   }
   document.getElementById('todoInput').value = '';
@@ -61,21 +61,20 @@ document.getElementById('todoInput').addEventListener('keyup', function() {
 
 
 function replaceCheckBox(e) {
-  var checkBox = e; //document.getElementById(id);
-  var myText= document.createTextNode("done")
+  let checkBox = e; //document.getElementById(id);
+  let myText= document.createTextNode('done')
   checkBox.parentNode.replaceChild(myText, checkBox);
 }
 
  
-  function deleteParent(e)
-{
+  function deleteParent(e) {
     e.parentNode.parentNode.removeChild(e.parentNode);
 }
 
 function editThis(e){
  
     let li = e.parentElement;
-    var labeltext = li.getElementsByTagName("label")[0].textContent;
+    let labeltext = li.getElementsByTagName('label')[0].textContent;
     let p = document.createElement('p');
     let i = document.createElement('i');
     i.setAttribute('class', 'material-icons check save');
@@ -97,8 +96,8 @@ function editThis(e){
 function saveAndDelete(e){
 
     let li = e.parentElement.parentElement;
-    let labeltext= li.getElementsByTagName("label")[0];
-    let replacetext =  li.getElementsByTagName("p")[0].getElementsByTagName("input")[0].value; 
+    let labeltext= li.getElementsByTagName('label')[0];
+    let replacetext = li.getElementsByTagName('p')[0].getElementsByTagName('input')[0].value; 
      labeltext.innerHTML = replacetext;
     deleteParent(e);
 
