@@ -101,3 +101,13 @@ ul, li {
     left: 5px;
     top: 7px;
 }
+
+.label-class {
+	margin: 10px;
+}
+
+
+#maxwarning{
+	display: none;
+	text-align: center;
+}
