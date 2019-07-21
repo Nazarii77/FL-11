@@ -1,2 +1,103 @@
-/* Your styles goes here */
+h1, ul, li, span {
+	color: #3bb3fe;
+	list-style-type: none;
+}
 
+ul, li {
+	position: relative;
+	text-align: left;
+	margin-left: 4%;
+}
+
+.maininput {
+    margin: 0;
+    border-radius: 0;
+    width: 75%;
+    padding: 15px;
+    font-size: 14px;
+    border: solid 1px #ccc;
+    border-radius: 3px;
+}
+
+.editinput{
+    margin: 0;
+    border-radius: 0;
+    width: 30%;
+    padding: 5px 10px;
+    font-size: 12px;
+    border: solid 1px #ccc;
+    border-radius: 3px;	
+}
+
+.add {
+	opacity: 0.5;
+	font-size: 200%;
+}
+ #root {  
+	text-align: center;
+}
+
+.add {
+	position: relative;
+    top: 20px;
+    /*left: 10px;*/
+    font-size: 300%;
+    border-width: 0;
+    background: transparent;
+}	
+
+
+.hrizontal-line { 
+	width: 80%;
+	text-align:  center;
+	text-decoration-color: #3bb3fe;
+	display: block; 
+	height: 3px;
+    border: 0; 
+    border-top: 3px solid #3bb3fe;
+    opacity: 0.5;
+    margin-bottom: 15px;
+    margin-top: 20px;
+ 
+}
+
+ .check {
+ 	color: black;
+  	background-color: lightgrey; 
+ opacity: 0.5;
+ 	margin: 0;
+ }
+
+
+ 
+.checkmark {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: transparent;
+  border: 1px solid black;
+  color: black;
+  background-color: lightgrey;
+  opacity: 0.5;
+  margin: 0;
+}
+ 
+
+.delete, .edit, .save{
+    right: 11%;
+    color:  #3bb3fe;	
+    background-color: white;
+}  
+
+.delete {
+	position: absolute;
+    text-align: right;
+}
+
+.save {
+	    position: relative;
+    left: 5px;
+    top: 7px;
+}
