@@ -151,13 +151,13 @@ let source;
 
 function dragStarted(e) {
 source = e.target;
-  e.dataTransfer.setData("text/plain", e.target.innerHTML);
-  e.dataTransfer.effectAllowed = "move";
+  e.dataTransfer.setData('text/plain', e.target.innerHTML);
+  e.dataTransfer.effectAllowed = 'move';
 }
 
 function draggingOver(e) {
   e.preventDefault();
-  e.dataTransfer.dropEffect = "move";
+  e.dataTransfer.dropEffect = 'move';
 }
 
 
@@ -167,6 +167,6 @@ function dropped(e) {
 
     if (e.target.localName === 'li') {
         source.innerHTML = e.target.innerHTML;
-        e.target.innerHTML = e.dataTransfer.getData("text/plain");
+        e.target.innerHTML = e.dataTransfer.getData('text/plain');
     }
 }
