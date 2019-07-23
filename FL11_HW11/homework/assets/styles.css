@@ -64,7 +64,7 @@ ul, li {
  .check {
  	color: black;
   	background-color: lightgrey; 
- opacity: 0.5;
+ 	opacity: 0.5;
  	margin: 0;
  }
 
@@ -111,22 +111,14 @@ ul, li {
 	display: none;
 	text-align: center;
 }
+
 [draggable] {
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
   user-select: none;
-  /* Required to make elements draggable in old WebKit */
-  -khtml-user-drag: element;
-  -webkit-user-drag: element;
 }
 
-
-
-.column.dragElem {
+.column, .dragElem {
   opacity: 0.4;
 }
-.column.over {
-  //border: 2px dashed #000;
+.column, .over { 
   border-top: 2px solid blue;
 }

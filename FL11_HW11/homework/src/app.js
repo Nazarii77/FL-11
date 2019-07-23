@@ -27,10 +27,8 @@ function addNewToDO() {
         label.setAttribute('class', 'label-class');
         let inputValue = document.getElementById('todoInput').value;
         let t = document.createTextNode(inputValue);
-
         let icheck = document.createElement('i');
         icheck.setAttribute('class', 'material-icons check');
-        //icheck.setAttribute('onclick', 'editThis(this)');
 
         let incheckbox = document.createElement('input');
         incheckbox.setAttribute('class', 'checkmark');
@@ -38,7 +36,6 @@ function addNewToDO() {
         incheckbox.setAttribute('type', 'checkbox');
         icheck.appendChild(incheckbox);
         li.appendChild(icheck);
-
         //main
         label.appendChild(t);
         li.appendChild(label);
@@ -145,8 +142,6 @@ function checkitemquantity(current_item, max_item) {
 
 }
 
-
-
 let source;
 
 function dragStarted(e) {
@@ -159,7 +154,6 @@ function draggingOver(e) {
   e.preventDefault();
   e.dataTransfer.dropEffect = 'move';
 }
-
 
 function dropped(e) {
     e.preventDefault();
