@@ -1,2 +1,83 @@
-/* Your styles go here */
+ ul, li{
+	list-style-type: none;
+	height: 40px;
+}
 
+ #root, #add {  
+	text-align: center;
+}
+
+.centered {
+	text-align: center;  
+	margin : 10px auto;
+	width: 20vw;
+}
+ 
+.btn-round , .add-input,#cancel-btn , #save-btn {
+    border-radius: 10px;
+    font-size: 1.2em;
+    padding: 5px 15px;
+}
+
+.add-input{
+	display: block;
+    margin: 0 auto;
+    width: 100%;
+}
+.emptynotify {
+	font-weight: 400;
+}
+
+#save-btn {
+	float: right;
+	margin-right: -33px; /*vw compensation*/
+	margin-top: 1em;
+}
+
+#cancel-btn {
+	float: left;
+	margin-top: 1em;	
+}
+
+.add-input {
+	display: block; margin : 0 auto;  
+}
+
+
+.unchecked, .checked{
+	float: left;
+
+}
+
+.unchecked {
+	background-color: transparent;
+}
+
+.li-uncheck {
+	background-color: transparent;
+}
+
+.li-checked {
+	background-color: grey;
+}
+
+ 
+
+.label-class {
+	font-size: 2em;
+}
+
+.deleteimg {
+	float: right;
+}
+
+input[type=checkbox] { display:none; } /* to hide the checkbox itself */
+input[type=checkbox] + label:before {
+  display: inline-block;
+}
+	
+/*input[type=checkbox] + label:before { content: "\f096"; }*/ /* unchecked icon */
+input[type=checkbox] + label:before { letter-spacing: 10px; } /* space between checkbox and label */
+
+/*input[type=checkbox]:checked + label:before { content: "\f046"; } *//* checked icon */
+input[type=checkbox]:checked + label:before { letter-spacing: 5px; } /* allow space for check mark */
