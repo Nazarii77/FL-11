@@ -9,9 +9,9 @@ const todoItems = [{
 
 let current_item = 0;
 let amounttodo = 0;
-let addSwitchMod = "Add";
-let edititemtext = "";
-let editelement = "";
+let addSwitchMod = 'Add';
+let edititemtext = '';
+let editelement = '';
 
 let maindiv = document.createElement('div');
 maindiv.setAttribute('id', 'maindiv');
@@ -55,11 +55,11 @@ let msg = document.createElement('p');
 let alertmsgtext = document.createTextNode('You can`t add already existing item');
 msg.appendChild(alertmsgtext);
 alertdiv.appendChild(msg);
-let close = document.createElement('a');
-close.setAttribute('id', 'close');
-close.setAttribute('href', '#');
-close.setAttribute('onclick', 'removealert()');
-alertdiv.appendChild(close);
+let myclose = document.createElement('a');
+myclose.setAttribute('id', 'close');
+myclose.setAttribute('href', '#');
+myclose.setAttribute('onclick', 'removealert()');
+alertdiv.appendChild(myclose);
 rootNode.appendChild(alertdiv);
 removealert();
 
@@ -83,7 +83,7 @@ removedonealert();
 
 const addNode = document.getElementById('root');
 let headingAdd = document.createElement('h1');
-headingAdd.setAttribute('id','add-modify');
+headingAdd.setAttribute('id', 'add-modify');
 let headingAddtext = document.createTextNode('Add task');
 headingAdd.appendChild(headingAddtext);
 
@@ -113,85 +113,85 @@ divadd.appendChild(savebtn);
 addNode.appendChild(divadd);
 document.getElementById('adddiv').style.display = 'none';
 
-function addNewToDO(e) {
-		let inputValue = document.getElementById('todoInput').value;
+function addNewToDO() {
+    let inputValue = document.getElementById('todoInput').value;
 
-	if (addSwitchMod == 'Mod'){
+    if (addSwitchMod === 'Mod') {
 
-		if (!checkexist()) {
-			editelement.textContent = inputValue;
-			editelement.setAttribute('class', 'label-class');
-			let uncheckedbox = document.createElement('img');
-		    uncheckedbox.setAttribute('src', 'assets/img/todo-s.png');
-		    uncheckedbox.setAttribute('class', 'unchecked');
-		    uncheckedbox.setAttribute('onclick', 'changestatus(this)');
-		    editelement.appendChild(uncheckedbox);
+        if (!checkexist()) {
+            editelement.textContent = inputValue;
+            editelement.setAttribute('class', 'label-class');
+            let uncheckedbox = document.createElement('img');
+            uncheckedbox.setAttribute('src', 'assets/img/todo-s.png');
+            uncheckedbox.setAttribute('class', 'unchecked');
+            uncheckedbox.setAttribute('onclick', 'changestatus(this)');
+            editelement.appendChild(uncheckedbox);
 
-		    let deletecheckbox = document.createElement('img');
-		    deletecheckbox.setAttribute('src', 'assets/img/remove-s.jpg');
-		    deletecheckbox.setAttribute('class', 'deleteimg');
-		    deletecheckbox.setAttribute('onclick', 'deleteToDO(this)');
-		    editelement.appendChild(deletecheckbox);
+            let deletecheckbox = document.createElement('img');
+            deletecheckbox.setAttribute('src', 'assets/img/remove-s.jpg');
+            deletecheckbox.setAttribute('class', 'deleteimg');
+            deletecheckbox.setAttribute('onclick', 'deleteToDO(this)');
+            editelement.appendChild(deletecheckbox);
 
-			document.getElementById('maindiv').style.display = 'block';
-	        document.getElementById('adddiv').style.display = 'none';
-	        clearinput();
-	    } else {
-	        showalert();
-	    }
+            document.getElementById('maindiv').style.display = 'block';
+            document.getElementById('adddiv').style.display = 'none';
+            clearinput();
+        } else {
+            showalert();
+        }
 
     } else {
-	    current_item++;
-	    amounttodo++;
-	    checkamount(amounttodo);
-	    location.hash = '#' + current_item;
+        current_item++;
+        amounttodo++;
+        checkamount(amounttodo);
+        location.hash = '#' + current_item;
 
-	    let ul = document.getElementById('mylist');
-	    let li = document.createElement('li');
-	    li.setAttribute('class', 'li-uncheck');
-	    let label = document.createElement('label');
-	    label.setAttribute('class', 'label-class');
-	    label.setAttribute('onclick', 'editlabel(this)');
-	    label.setAttribute('for', 'Checkbox' + current_item);
-	    label.setAttribute('id', 'Checkbox' + current_item);
+        let ul = document.getElementById('mylist');
+        let li = document.createElement('li');
+        li.setAttribute('class', 'li-uncheck');
+        let label = document.createElement('label');
+        label.setAttribute('class', 'label-class');
+        label.setAttribute('onclick', 'editlabel(this)');
+        label.setAttribute('for', 'Checkbox' + current_item);
+        label.setAttribute('id', 'Checkbox' + current_item);
 
-	    let uncheckedbox = document.createElement('img');
-	    uncheckedbox.setAttribute('src', 'assets/img/todo-s.png');
-	    uncheckedbox.setAttribute('class', 'unchecked');
-	    uncheckedbox.setAttribute('onclick', 'changestatus(this)');
-	    label.appendChild(uncheckedbox);
+        let uncheckedbox = document.createElement('img');
+        uncheckedbox.setAttribute('src', 'assets/img/todo-s.png');
+        uncheckedbox.setAttribute('class', 'unchecked');
+        uncheckedbox.setAttribute('onclick', 'changestatus(this)');
+        label.appendChild(uncheckedbox);
 
-	    let deletecheckbox = document.createElement('img');
-	    deletecheckbox.setAttribute('src', 'assets/img/remove-s.jpg');
-	    deletecheckbox.setAttribute('class', 'deleteimg');
-	    deletecheckbox.setAttribute('onclick', 'deleteToDO(this)');
-	    label.appendChild(deletecheckbox);
+        let deletecheckbox = document.createElement('img');
+        deletecheckbox.setAttribute('src', 'assets/img/remove-s.jpg');
+        deletecheckbox.setAttribute('class', 'deleteimg');
+        deletecheckbox.setAttribute('onclick', 'deleteToDO(this)');
+        label.appendChild(deletecheckbox);
 
-	    if (!checkexist()) {
-	        let t = document.createTextNode(inputValue);
+        if (!checkexist()) {
+            let t = document.createTextNode(inputValue);
 
-	        let firstchecked = document.getElementsByClassName('li-checked')[0];
-	       	if (firstchecked!= "undefined"){
-    			ul.insertBefore(li, firstchecked);
-    		} else{
-    			ul.appendChild(li);
-    		}	
+            let firstchecked = document.getElementsByClassName('li-checked')[0];
+            if (firstchecked !== 'undefined') {
+                ul.insertBefore(li, firstchecked);
+            } else {
+                ul.appendChild(li);
+            }
 
-	        let incheckbox = document.createElement('input');
-	        incheckbox.setAttribute('class', 'checkmark');
-	        //incheckbox.setAttribute('onclick', 'replaceCheckBox(this)');
-	        incheckbox.setAttribute('type', 'checkbox');
+            let incheckbox = document.createElement('input');
+            incheckbox.setAttribute('class', 'checkmark');
+            //incheckbox.setAttribute('onclick', 'replaceCheckBox(this)');
+            incheckbox.setAttribute('type', 'checkbox');
 
-	        li.appendChild(incheckbox);
-	        //main
-	        label.appendChild(t);
-	        li.appendChild(label);
-	        document.getElementById('maindiv').style.display = 'block';
-	        document.getElementById('adddiv').style.display = 'none';
-	        clearinput();
-	    } else {
-	        showalert();
-	    }
+            li.appendChild(incheckbox);
+            //main
+            label.appendChild(t);
+            li.appendChild(label);
+            document.getElementById('maindiv').style.display = 'block';
+            document.getElementById('adddiv').style.display = 'none';
+            clearinput();
+        } else {
+            showalert();
+        }
 
     }
 
@@ -201,7 +201,7 @@ function showaddfunc(e) {
     document.getElementById('maindiv').style.display = 'none';
     document.getElementById('adddiv').style.display = 'block';
     document.getElementById('emptynotify').style.display = 'none';
-    document.getElementById('add-modify').innerHTML='Add item';
+    document.getElementById('add-modify').innerHTML = 'Add item';
     addSwitchMod = 'Add';
     clearinput();
     editelement = e;
@@ -209,10 +209,12 @@ function showaddfunc(e) {
 
 
 function deleteToDO(e) {
-	//to stop click event on beneath label
-	 	var event = window.event
-    	event.cancelBubble = true;
-    if (event.stopPropagation) event.stopPropagation();
+    //to stop click event on beneath label
+    let event = window.event
+    event.cancelBubble = true;
+    if (event.stopPropagation) {
+        event.stopPropagation();
+    }
     let li = e.parentElement.parentElement;
     li.setAttribute('class', 'li-uncheck');
     li.setAttribute('style', 'display:none');
@@ -232,10 +234,12 @@ function checkamount(amounttodo) {
 
 
 function changestatus(e) {
-	//to stop click event on beneath label
-	 	var event = window.event
-    	event.cancelBubble = true;
-    if (event.stopPropagation) event.stopPropagation();
+    //to stop click event on beneath label
+    let event = window.event
+    event.cancelBubble = true;
+    if (event.stopPropagation) {
+        event.stopPropagation();
+    }
     e.setAttribute('src', 'assets/img/done-s.png');
     e.setAttribute('class', 'checked');
     e.setAttribute('onclick', 'changestatusback(this)');
@@ -244,15 +248,17 @@ function changestatus(e) {
     let currentliamount = document.getElementsByTagName('li').length;
     let lastli = document.getElementsByTagName('li')[currentliamount - 1];
     lastli.insertAdjacentElement('afterend', li);
-    li = e.parentElement.parentElement; 
+    li = e.parentElement.parentElement;
     removealert();
 }
 
 function changestatusback(e) {
-	//to stop click event on beneath label
-	 	var event = window.event
-    	event.cancelBubble = true;
-    if (event.stopPropagation) event.stopPropagation();
+    //to stop click event on beneath label
+    let event = window.event
+    event.cancelBubble = true;
+    if (event.stopPropagation) {
+        event.stopPropagation();
+    }
 
     e.setAttribute('src', 'assets/img/todo-s.png');
     e.setAttribute('class', 'unchecked');
@@ -261,7 +267,7 @@ function changestatusback(e) {
     li.setAttribute('class', 'li-uncheck');
     let firstchecked = document.getElementsByClassName('li-checked')[0];
     li.parentNode.insertBefore(li, firstchecked);
-    removealert(); 
+    removealert();
 }
 
 
@@ -280,10 +286,10 @@ function clearinput() {
 
 
 function checkexist() {
-	var alreadyexist = false;
+    let alreadyexist = false;
     let inputValue = document.getElementById('todoInput').value;
     let labelamount = document.getElementsByTagName('label').length;
-    for (var i = 0; i <  labelamount; i++) {
+    for (let i = 0; i < labelamount; i++) {
         let labeltext = document.getElementsByTagName('label')[i].textContent;
         if (labeltext === inputValue) {
             alreadyexist = true;
@@ -294,32 +300,32 @@ function checkexist() {
 }
 
 
-function showalert() { 
- document.getElementById('alertdiv').style.display = 'block';
+function showalert() {
+    document.getElementById('alertdiv').style.display = 'block';
 
 }
 
- 
-function removealert() { 
-  document.getElementById('alertdiv').style.display = 'none';
+
+function removealert() {
+    document.getElementById('alertdiv').style.display = 'none';
 }
 
-function removedonealert() { 
-  document.getElementById('donealert').style.display = 'none';
+function removedonealert() {
+    document.getElementById('donealert').style.display = 'none';
 }
 
 function editlabel(e) {
-	//console.log(e.parentElement.className );
-	if (e.parentElement.className == "li-checked") {
-		 document.getElementById('donealert').style.display = 'block';
-	} else if (e.parentElement.className == "li-uncheck")  {
-		 showaddfunc(e);
-		 document.getElementById('add-modify').innerHTML='Modify item';
-		 addSwitchMod = 'Mod';
+    //console.log(e.parentElement.className );
+    if (e.parentElement.className === 'li-checked') {
+        document.getElementById('donealert').style.display = 'block';
+    } else if (e.parentElement.className === 'li-uncheck') {
+        showaddfunc(e);
+        document.getElementById('add-modify').innerHTML = 'Modify item';
+        addSwitchMod = 'Mod';
 
-		edititemtext = editelement.textContent;
-		document.getElementById('todoInput').value = edititemtext;
-		//console.log(editelement.id);
-	}
-	
-} 
+        edititemtext = editelement.textContent;
+        document.getElementById('todoInput').value = edititemtext;
+        //console.log(editelement.id);
+    }
+
+}
