@@ -166,7 +166,6 @@ function recoverfromstorage(item) {
     incheckbox.setAttribute('type', 'checkbox');
     li.appendChild(incheckbox);
     li.appendChild(label);
-    console.log(li);
     ul.appendChild(li);
 }
 
