@@ -6,11 +6,12 @@ const todoItems = [{
     description: 'Todo 1'
 }];
 
-let showmain = true;
-let showadd = false;
-let showedit = false;
+
 let current_item = 0;
 let amounttodo = 0;
+let addSwitchMod = "Add";
+let edititemtext = "";
+let editelement = "";
 
 let maindiv = document.createElement('div');
 maindiv.setAttribute('id', 'maindiv');
@@ -44,22 +45,45 @@ divaddresult.appendChild(ul);
 
 maindiv.appendChild(divaddresult);
 
-/* rootNode.appendChild(document.createElement('br'));
-rootNode.appendChild(document.createElement('br'));
-rootNode.appendChild(document.createElement('br'));
-rootNode.appendChild(document.createElement('br'));
-rootNode.appendChild(document.createElement('br'));
-rootNode.appendChild(document.createElement('br'));
-rootNode.appendChild(document.createElement('br'));
-rootNode.appendChild(document.createElement('br'));
-rootNode.appendChild(document.createElement('br'));
-rootNode.appendChild(document.createElement('br')); */
+let alertdiv = document.createElement('div');
+alertdiv.setAttribute('id', 'alertdiv');
+let bold = document.createElement('b');
+let boldtext = document.createTextNode('Danger!');
+bold.appendChild(boldtext);
+alertdiv.appendChild(bold);
+let msg = document.createElement('p');
+let alertmsgtext = document.createTextNode('You can`t add already existing item');
+msg.appendChild(alertmsgtext);
+alertdiv.appendChild(msg);
+let close = document.createElement('a');
+close.setAttribute('id', 'close');
+close.setAttribute('href', '#');
+close.setAttribute('onclick', 'removealert()');
+alertdiv.appendChild(close);
+rootNode.appendChild(alertdiv);
+removealert();
 
-/*add page*/
-
+let donealert = document.createElement('div');
+donealert.setAttribute('id', 'donealert');
+let bolddone = document.createElement('b');
+let bolddonetext = document.createTextNode('Danger!');
+bolddone.appendChild(boldtext);
+donealert.appendChild(bolddone);
+let donemsg = document.createElement('p');
+let donealertmsgtext = document.createTextNode('You can`t edit already done item');
+donemsg.appendChild(donealertmsgtext);
+donealert.appendChild(donemsg);
+let doneclose = document.createElement('a');
+doneclose.setAttribute('id', 'closedone');
+doneclose.setAttribute('href', '#');
+doneclose.setAttribute('onclick', 'removedonealert()');
+donealert.appendChild(doneclose);
+rootNode.appendChild(donealert);
+removedonealert();
 
 const addNode = document.getElementById('root');
 let headingAdd = document.createElement('h1');
+headingAdd.setAttribute('id','add-modify');
 let headingAddtext = document.createTextNode('Add task');
 headingAdd.appendChild(headingAddtext);
 
@@ -87,107 +111,215 @@ divadd.appendChild(cancelebtn);
 divadd.appendChild(savebtn);
 
 addNode.appendChild(divadd);
- document.getElementById('adddiv').style.display = 'none';
+document.getElementById('adddiv').style.display = 'none';
 
-/*let list = document.createElement('ul');
-list.setAttribute('id', 'mylist');
-addNode.appendChild(list);*/
+function addNewToDO(e) {
+		let inputValue = document.getElementById('todoInput').value;
 
-savebtn.setAttribute('onclick', 'addNewToDO()');
+	if (addSwitchMod == 'Mod'){
 
-function addNewToDO() {
-    current_item++;
-    amounttodo++;
-    checkamount(amounttodo);
-    location.hash = '#' + current_item;
+		if (!checkexist()) {
+			editelement.textContent = inputValue;
+			editelement.setAttribute('class', 'label-class');
+			let uncheckedbox = document.createElement('img');
+		    uncheckedbox.setAttribute('src', 'assets/img/todo-s.png');
+		    uncheckedbox.setAttribute('class', 'unchecked');
+		    uncheckedbox.setAttribute('onclick', 'changestatus(this)');
+		    editelement.appendChild(uncheckedbox);
 
-    let ul = document.getElementById('mylist');
-    let li = document.createElement('li');
-    let label = document.createElement('label');
-    label.setAttribute('class', 'label-class');
-    label.setAttribute('for', 'Checkbox' + current_item);
-    let uncheckedbox = document.createElement('img');
-    uncheckedbox.setAttribute('src', 'assets/img/todo-s.png');
-    uncheckedbox.setAttribute('class', 'unchecked');
-    uncheckedbox.setAttribute('onclick', 'changestatus(this)');
-    label.appendChild(uncheckedbox);
+		    let deletecheckbox = document.createElement('img');
+		    deletecheckbox.setAttribute('src', 'assets/img/remove-s.jpg');
+		    deletecheckbox.setAttribute('class', 'deleteimg');
+		    deletecheckbox.setAttribute('onclick', 'deleteToDO(this)');
+		    editelement.appendChild(deletecheckbox);
 
-    let deletecheckbox = document.createElement('img');
-    deletecheckbox.setAttribute('src', 'assets/img/remove-s.jpg');
-    deletecheckbox.setAttribute('class', 'deleteimg');
-    deletecheckbox.setAttribute('onclick', 'deleteToDO(this)');
-    label.appendChild(deletecheckbox);
+			document.getElementById('maindiv').style.display = 'block';
+	        document.getElementById('adddiv').style.display = 'none';
+	        clearinput();
+	    } else {
+	        showalert();
+	    }
 
-    let inputValue = document.getElementById('todoInput').value;
-    let t = document.createTextNode(inputValue);
+    } else {
+	    current_item++;
+	    amounttodo++;
+	    checkamount(amounttodo);
+	    location.hash = '#' + current_item;
 
-    ul.appendChild(li);
-    let incheckbox = document.createElement('input');
-    incheckbox.setAttribute('class', 'checkmark');
-    //incheckbox.setAttribute('onclick', 'replaceCheckBox(this)');
-    incheckbox.setAttribute('type', 'checkbox');
+	    let ul = document.getElementById('mylist');
+	    let li = document.createElement('li');
+	    li.setAttribute('class', 'li-uncheck');
+	    let label = document.createElement('label');
+	    label.setAttribute('class', 'label-class');
+	    label.setAttribute('onclick', 'editlabel(this)');
+	    label.setAttribute('for', 'Checkbox' + current_item);
+	    label.setAttribute('id', 'Checkbox' + current_item);
 
-    li.appendChild(incheckbox);
-    //main
-    label.appendChild(t);
-    li.appendChild(label);
-    document.getElementById('maindiv').style.display = 'block';
-    document.getElementById('adddiv').style.display = 'none';
+	    let uncheckedbox = document.createElement('img');
+	    uncheckedbox.setAttribute('src', 'assets/img/todo-s.png');
+	    uncheckedbox.setAttribute('class', 'unchecked');
+	    uncheckedbox.setAttribute('onclick', 'changestatus(this)');
+	    label.appendChild(uncheckedbox);
+
+	    let deletecheckbox = document.createElement('img');
+	    deletecheckbox.setAttribute('src', 'assets/img/remove-s.jpg');
+	    deletecheckbox.setAttribute('class', 'deleteimg');
+	    deletecheckbox.setAttribute('onclick', 'deleteToDO(this)');
+	    label.appendChild(deletecheckbox);
+
+	    if (!checkexist()) {
+	        let t = document.createTextNode(inputValue);
+
+	        let firstchecked = document.getElementsByClassName('li-checked')[0];
+	       	if (firstchecked!= "undefined"){
+    			ul.insertBefore(li, firstchecked);
+    		} else{
+    			ul.appendChild(li);
+    		}	
+
+	        let incheckbox = document.createElement('input');
+	        incheckbox.setAttribute('class', 'checkmark');
+	        //incheckbox.setAttribute('onclick', 'replaceCheckBox(this)');
+	        incheckbox.setAttribute('type', 'checkbox');
+
+	        li.appendChild(incheckbox);
+	        //main
+	        label.appendChild(t);
+	        li.appendChild(label);
+	        document.getElementById('maindiv').style.display = 'block';
+	        document.getElementById('adddiv').style.display = 'none';
+	        clearinput();
+	    } else {
+	        showalert();
+	    }
+
+    }
+
 }
 
-
-
-function showaddfunc() {
+function showaddfunc(e) {
     document.getElementById('maindiv').style.display = 'none';
     document.getElementById('adddiv').style.display = 'block';
     document.getElementById('emptynotify').style.display = 'none';
+    document.getElementById('add-modify').innerHTML='Add item';
+    addSwitchMod = 'Add';
+    clearinput();
+    editelement = e;
 }
 
 
 function deleteToDO(e) {
-	let li = e.parentElement.parentElement;
-	li.setAttribute('class', 'li-uncheck');
-	li.setAttribute('style', 'display:none');
+	//to stop click event on beneath label
+	 	var event = window.event
+    	event.cancelBubble = true;
+    if (event.stopPropagation) event.stopPropagation();
+    let li = e.parentElement.parentElement;
+    li.setAttribute('class', 'li-uncheck');
+    li.setAttribute('style', 'display:none');
     e.parentNode.parentNode.removeChild(e.parentNode);
     amounttodo--;
     checkamount(amounttodo);
 }
 
-function checkamount(amounttodo){
-	if (amounttodo > 0 ) {
-		document.getElementById('emptynotify').style.display = 'none';
-	} else {
-		document.getElementById('emptynotify').style.display = 'block';
-	}
+function checkamount(amounttodo) {
+    if (amounttodo > 0) {
+        document.getElementById('emptynotify').style.display = 'none';
+    } else {
+        document.getElementById('emptynotify').style.display = 'block';
+    }
 
 }
 
 
-function changestatus (e) {	 
-	e.setAttribute('src', 'assets/img/done-s.png');
+function changestatus(e) {
+	//to stop click event on beneath label
+	 	var event = window.event
+    	event.cancelBubble = true;
+    if (event.stopPropagation) event.stopPropagation();
+    e.setAttribute('src', 'assets/img/done-s.png');
     e.setAttribute('class', 'checked');
     e.setAttribute('onclick', 'changestatusback(this)');
     let li = e.parentElement.parentElement;
     li.setAttribute('class', 'li-checked');
-    let currentliamount= document.getElementsByTagName('li').length;
-    let lastli = document.getElementsByTagName('li')[currentliamount-1];
+    let currentliamount = document.getElementsByTagName('li').length;
+    let lastli = document.getElementsByTagName('li')[currentliamount - 1];
     lastli.insertAdjacentElement('afterend', li);
-    li = e.parentElement.parentElement;
+    li = e.parentElement.parentElement; 
+    removealert();
 }
 
 function changestatusback(e) {
-	e.setAttribute('src', 'assets/img/todo-s.png');
+	//to stop click event on beneath label
+	 	var event = window.event
+    	event.cancelBubble = true;
+    if (event.stopPropagation) event.stopPropagation();
+
+    e.setAttribute('src', 'assets/img/todo-s.png');
     e.setAttribute('class', 'unchecked');
     e.setAttribute('onclick', 'changestatus(this)');
     let li = e.parentElement.parentElement;
-	li.setAttribute('class', 'li-uncheck');
+    li.setAttribute('class', 'li-uncheck');
     let firstchecked = document.getElementsByClassName('li-checked')[0];
-    li.parentNode.insertBefore( li, firstchecked);
+    li.parentNode.insertBefore(li, firstchecked);
+    removealert(); 
 }
 
- 
+
 function CancelAddToDO() {
     document.getElementById('maindiv').style.display = 'block';
     document.getElementById('adddiv').style.display = 'none';
+    removealert();
     checkamount(amounttodo);
- } 
+    clearinput();
+}
+
+function clearinput() {
+    document.getElementById('todoInput').value = '';
+}
+
+
+
+function checkexist() {
+	var alreadyexist = false;
+    let inputValue = document.getElementById('todoInput').value;
+    let labelamount = document.getElementsByTagName('label').length;
+    for (var i = 0; i <  labelamount; i++) {
+        let labeltext = document.getElementsByTagName('label')[i].textContent;
+        if (labeltext === inputValue) {
+            alreadyexist = true;
+            showalert();
+        }
+    }
+    return alreadyexist;
+}
+
+
+function showalert() { 
+ document.getElementById('alertdiv').style.display = 'block';
+
+}
+
+ 
+function removealert() { 
+  document.getElementById('alertdiv').style.display = 'none';
+}
+
+function removedonealert() { 
+  document.getElementById('donealert').style.display = 'none';
+}
+
+function editlabel(e) {
+	//console.log(e.parentElement.className );
+	if (e.parentElement.className == "li-checked") {
+		 document.getElementById('donealert').style.display = 'block';
+	} else if (e.parentElement.className == "li-uncheck")  {
+		 showaddfunc(e);
+		 document.getElementById('add-modify').innerHTML='Modify item';
+		 addSwitchMod = 'Mod';
+
+		edititemtext = editelement.textContent;
+		document.getElementById('todoInput').value = edititemtext;
+		//console.log(editelement.id);
+	}
+	
+} 
