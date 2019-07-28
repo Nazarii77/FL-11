@@ -1,6 +1,6 @@
 const rootNode = document.getElementById('root');
 
-const todoItems = [{
+let todoItems = [{
     isDone: false,
     id: 12345,
     description: 'Todo 1'
@@ -112,6 +112,55 @@ divadd.appendChild(savebtn);
 addNode.appendChild(divadd);
 document.getElementById('adddiv').style.display = 'none';
 
+window.onload = function() {
+    if (localStorage.getItem('todo') !== undefined) {
+        todoItems = JSON.parse(localStorage.getItem('todo'));
+        let amountofstored = todoItems.length;
+        for (let i = 0; i < amountofstored; i++) {
+            recoverfromstorage(todoItems[i]);
+        }
+    }
+}
+
+function recoverfromstorage(item) {
+    let ul = document.getElementById('mylist');
+    let li = document.createElement('li');
+    li.setAttribute('class', 'li-uncheck');
+    let label = document.createElement('label');
+    label.setAttribute('class', 'label-class');
+    label.setAttribute('onclick', 'editlabel(this)');
+    label.setAttribute('for', item.id);
+    label.setAttribute('id', item.id);
+    let textrecovered = document.createTextNode(item.description);
+    label.appendChild(textrecovered);
+
+    let uncheckedbox = document.createElement('img');
+    uncheckedbox.setAttribute('src', 'assets/img/todo-s.png');
+    if (!item.isDone) {
+        uncheckedbox.setAttribute('class', 'unchecked');
+        uncheckedbox.setAttribute('onclick', 'changestatus(this)');
+    } else {
+        uncheckedbox.setAttribute('class', 'checked');
+        uncheckedbox.setAttribute('onclick', 'changestatusback(this)');
+    }
+
+    label.appendChild(uncheckedbox);
+    let deletecheckbox = document.createElement('img');
+    deletecheckbox.setAttribute('src', 'assets/img/remove-s.jpg');
+    deletecheckbox.setAttribute('class', 'deleteimg');
+    deletecheckbox.setAttribute('onclick', 'deleteToDO(this)');
+    label.appendChild(deletecheckbox);
+
+    let incheckbox = document.createElement('input');
+    incheckbox.setAttribute('class', 'checkmark');
+    incheckbox.setAttribute('type', 'checkbox');
+    li.appendChild(incheckbox);
+    li.appendChild(label);
+    console.log(li);
+    ul.appendChild(li);
+}
+
+
 function addNewToDO() {
     let inputValue = document.getElementById('todoInput').value;
 
@@ -168,6 +217,15 @@ function addNewToDO() {
 
         if (!checkexist()) {
             let t = document.createTextNode(inputValue);
+            let temp = {};
+            temp.isDone = false;
+            temp.id = 'Checkbox' + current_item;
+            temp.description = inputValue;
+            let i = todoItems.length;
+            todoItems[i] = temp;
+
+            localStorage.setItem('todo', JSON.stringify(todoItems));
+
 
             let firstchecked = document.getElementsByClassName('li-checked')[0];
             if (firstchecked !== 'undefined') {
