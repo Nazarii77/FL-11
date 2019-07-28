@@ -113,9 +113,18 @@ addNode.appendChild(divadd);
 document.getElementById('adddiv').style.display = 'none';
 
 window.onload = function() {
+    document.getElementById('emptynotify').style.display = 'none';
     if (localStorage.getItem('todo') !== undefined) {
         todoItems = JSON.parse(localStorage.getItem('todo'));
+        if (todoItems === null) {
+            todoItems = [{
+                isDone: false,
+                id: 12345,
+                description: 'Todo 1'
+            }];
+        }
         let amountofstored = todoItems.length;
+        amounttodo = todoItems.length;
         for (let i = 0; i < amountofstored; i++) {
             recoverfromstorage(todoItems[i]);
         }
@@ -123,6 +132,7 @@ window.onload = function() {
 }
 
 function recoverfromstorage(item) {
+
     let ul = document.getElementById('mylist');
     let li = document.createElement('li');
     li.setAttribute('class', 'li-uncheck');
