@@ -6,7 +6,6 @@ const todoItems = [{
     description: 'Todo 1'
 }];
 
-
 let current_item = 0;
 let amounttodo = 0;
 let addSwitchMod = 'Add';
@@ -179,11 +178,8 @@ function addNewToDO() {
 
             let incheckbox = document.createElement('input');
             incheckbox.setAttribute('class', 'checkmark');
-            //incheckbox.setAttribute('onclick', 'replaceCheckBox(this)');
             incheckbox.setAttribute('type', 'checkbox');
-
             li.appendChild(incheckbox);
-            //main
             label.appendChild(t);
             li.appendChild(label);
             document.getElementById('maindiv').style.display = 'block';
@@ -231,7 +227,6 @@ function checkamount(amounttodo) {
     }
 
 }
-
 
 function changestatus(e) {
     //to stop click event on beneath label
@@ -283,8 +278,6 @@ function clearinput() {
     document.getElementById('todoInput').value = '';
 }
 
-
-
 function checkexist() {
     let alreadyexist = false;
     let inputValue = document.getElementById('todoInput').value;
@@ -299,12 +292,10 @@ function checkexist() {
     return alreadyexist;
 }
 
-
 function showalert() {
     document.getElementById('alertdiv').style.display = 'block';
 
 }
-
 
 function removealert() {
     document.getElementById('alertdiv').style.display = 'none';
@@ -315,17 +306,15 @@ function removedonealert() {
 }
 
 function editlabel(e) {
-    //console.log(e.parentElement.className );
     if (e.parentElement.className === 'li-checked') {
         document.getElementById('donealert').style.display = 'block';
     } else if (e.parentElement.className === 'li-uncheck') {
         showaddfunc(e);
         document.getElementById('add-modify').innerHTML = 'Modify item';
         addSwitchMod = 'Mod';
-
         edititemtext = editelement.textContent;
         document.getElementById('todoInput').value = edititemtext;
-        //console.log(editelement.id);
+
     }
 
 }
