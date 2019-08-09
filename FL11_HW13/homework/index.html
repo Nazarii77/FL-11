@@ -12,40 +12,35 @@
 	<script src="js/bootstrap.min.js" ></script>
 	<script src="js/less.min.js" ></script>
 
- 
-
 </head>
 <body>
  
 
-<header class="header-section">
-	<div class="container header-section-container">
-		<div class="logo">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<div class="container">
+   		<div class="logo">
 			<img src="img/logo.png" alt="">
 		</div>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+	    <div class="navbar-nav menu-list">
+	      <a class="nav-item nav-link" id="active-nav__link" href="#">Classes <span class="sr-only">(current)</span></a>
+	      <a class="nav-item nav-link" href="#">About us</a>
+	      <a class="nav-item nav-link" href="#">Contacts</a> 
+	    </div>
+	  </div>
+	</div>  
+</nav>
 
-		<nav>
-			<ul class="menu-list">
-				<li class="active"><a href="#">Classes</a></li>
-				<li><a href="#">About us</a></li>
-				<li><a href="#">Contacts</a></li>
-			</ul>
-		</nav>
-	</div>
-</header>
-
- 
 <div class="container">
 	<h1 class="heading">Yoga Pilates</h1>
 <hr class="horizontal-line">
 
-
-
-
-
 <div class="row">
-  <div class="col-8"><img src="img/yoga.jpg"></div>
-	  <div class="col-4">
+  <div class="col-md-8"><img src="img/yoga.jpg" class="main-image"></div>
+	  <div class="col-md-4">
 		  	<h3 class="heading">Class description</h3>
 		  	<p>This workout uses a series of exercise routines designed to increase your core strength & improve your posture, energy, & flexibility. Pilates work is powered by breath, flow, & centering. By focusing on the mind-body connection & using more efficient form, this workout helps develop a stronger, leaner, healthier body. Appropriate for all fitness levels.</p>
 		  	<ul>
@@ -58,12 +53,8 @@
 	  </div>
 </div>
 
-
- 
-
 <h3 class="heading">Related classes</h3>
 <hr class="horizontal-line">
-
 
 <div class="row">
 	<div class="col-md-3 col-sm-6 col-xs-12 ">
@@ -90,7 +81,6 @@
 			<div class=" img-description">
 	              Bootcamp
 	        </div>
-		
 	</div>
 </div>
  
@@ -100,8 +90,5 @@
 	<footer class="footer__element"> &copy; Epam Front-end lab, 2019 </footer>
 </div>
  
-
-
-
 </body>
 </html>
