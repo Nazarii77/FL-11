@@ -95,26 +95,25 @@ console.log('private', d.privateField);
 //
 //
 ///////////////////1//
-
-
 constructor(type, calories) {
     this.type = type;
     let _calories = this.calories;
 
     this.getCalories = () => calories;
-    this.setCalories = (value) => value; //=> { 
+    this.setCalories = (value) => calories = value; //=> { 
     // calories = setCalories;
 }
-   
- 
+	
 
-  const myHumburger = new Hamburger('classic', 600)
-  console.log(myHumburger) // -->  { type : 'classic' ,  calories: '600'}
+const myHumburger = new Hamburger('classic', 600)
+console.log(myHumburger) // -->  { type : 'classic' ,  calories: '600'}
 
-  console.log(myHumburger.getCalories());
+console.log(myHumburger.getCalories());
 
 
-  console.log(myHumburger.setCalories(1221));
+console.log(myHumburger.setCalories(1221));
+
+console.log(myHumburger.getCalories());
 
 
 
