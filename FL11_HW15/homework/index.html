@@ -95,26 +95,29 @@ console.log('private', d.privateField);
 //
 //
 ///////////////////1//
+class Hamburger {
 constructor(type, calories) {
+    const bCheeseAdded = false;
     this.type = type;
     let _calories = this.calories;
-
     this.getCalories = () => calories;
-    this.setCalories = (value) => calories = value; //=> { 
-    // calories = setCalories;
-}
-	
+    this.setCalories = (value) => calories = value;
+    this.addCheese = () =>  { if(bCheeseAdded) {calories += 120; bCheeseAdded =true;} else {console.log("Sorry, you can add Cheese only once");}};
+  }
+}	
+
 
 const myHumburger = new Hamburger('classic', 600)
 console.log(myHumburger) // -->  { type : 'classic' ,  calories: '600'}
-
 console.log(myHumburger.getCalories());
-
-
 console.log(myHumburger.setCalories(1221));
-
 console.log(myHumburger.getCalories());
 
+
+
+myHumburger.addCheese();
+myHumburger.addCheese();
+console.log(myHumburger.getCalories());
 
 
 </script>
