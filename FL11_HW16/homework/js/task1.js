@@ -1,14 +1,15 @@
  
-   function assign( ){ 
+   function assign(target, varArgs  ){ 
   if (typeof Object.assign !== 'function') {
   // Must be writable: true, enumerable: false, configurable: true
   Object.defineProperty(Object, "assign", {
     value: function assign(target, varArgs) { // .length of function is 2
-      'use strict';
+      //'use strict';
       if (target === null || target === undefined) {
         throw new TypeError('Cannot convert undefined or null to object');
       }
       var to = Object(target);
+      console.log(to);
       for (var index = 1; index < arguments.length; index++) {
         var nextSource = arguments[index];
         if (nextSource !== null && nextSource !== undefined) { 
@@ -26,25 +27,17 @@
     configurable: true
   });
 }
-}
- 
-   
- 
- 
- 
+} 
  const defaults = { a: 123, b: 777 };
-  const options = { a: 456 };
-  const configs = assign({}, defaults, options); // => {a: 456, b: 777}
+ const options = { a: 456 };
+ const configs = assign({}, defaults, options); // => {a: 456, b: 777}
 
- 
-//////////////////////////////////////
- 
+////////////////////////////////////// 
 console.log(configs); 
 
- var o1 = { a: 1, b: 1, c: 1 };
+var o1 = { a: 1, b: 1, c: 1 };
 var o2 = { a: 2, c: 2 };
-var o3 = { c: 3 };
-
+var o3 = { c: 3 }; 
 var obj = Object.assign({}, o1, o2, o3);
 
-console.log(obj);  // виводить { a: 2, b: 1, c: 3 }
+//console.log(obj);  // виводить { a: 2, b: 1, c: 3 }
