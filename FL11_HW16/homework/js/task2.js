@@ -1,46 +1,28 @@
-// Task 1
-  const defaults = { a: 123, b: 777 };
-  const options = { a: 456 };
-  const configs = assign({}, defaults, options); // => {a: 456, b: 777}
+ create = function(proto, propertiesObject) {
+     if (typeof proto !== 'object' && typeof proto !== 'function') {
+         throw new TypeError('Object prototype may only be an Object: ' + proto);
+     } else if (proto === null) {
+         throw new Error("This browser's implementation of Object.create is a shim and doesn't support 'null' as the first argument.");
+     }
 
-  // Task 2
-  const obj1 = { prop: 5 };
-  const obj2 = create(obj1);
+     if (typeof propertiesObject != 'undefined') {
+         throw new Error("This browser's implementation of Object.create is a shim and doesn't support a second argument.");
+     }
 
-  Object.getPrototypeOf(obj2) === obj1; // => true
-  obj2.prop; // => 5
+     function F() {}
+     F.prototype = proto;
 
+     return new F();
+ };
 
-  // Task3
-  const charmander = new Charmander();
-  const charmeleon = new Charmeleon();
-  const charizard = new Charizard();
+ // Task 2
+ const obj1 = {
+     prop: 5
+ };
+ const obj2 = create(obj1);
 
-  charmander.getType(); // -> “Fire”
-  charmander.getType() === charmeleon.getType(); // -> true
-  charmeleon.getType() === charizard.getType(); // -> true
+ Object.getPrototypeOf(obj2) === obj1; // => true
+ obj2.prop; // => 5
 
-  charmander.evolve().constructor === Charmeleon; // -> true
-  charmeleon.evolve().constructor === Charizard; // -> true
-
-  charmander.getSpecie(); // -> “Lizard Pokémon”
-  charmeleon.getSpecie(); // -> “Flame Pokémon”
-  charizard.getSpecie() === charmeleon.getSpecie(); // -> true
-
-  charmander.canFly(); // -> false
-  charmander.canFly() === charmeleon.canFly(); // -> true
-  charizard.canFly(); // -> true
-
-  const pichu = new Pichu();
-  pichu.getPokemonType(); // => Pichu
-
-  const pikachu = pichu.evolve();
-  pikachu.getPokemonType(); // Pikachu
-  pikachu.constructor === Pikachu; // true
-
-  const raichu = pikachu.evolve();
-  raichu.getPokemonType(); // Raichu
-  raichu.constructor === Raichu; // true
-
-  const raichu2 = raichu.evolve(); // return raichu back as it's maximum level
-  raichu2 === raichu; // true
+ console.log(Object.getPrototypeOf(obj2) === obj1);
+ console.log(obj2.prop);
