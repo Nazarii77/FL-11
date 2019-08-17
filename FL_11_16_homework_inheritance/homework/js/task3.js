@@ -1,17 +1,49 @@
-// Task 1
-  const defaults = { a: 123, b: 777 };
-  const options = { a: 456 };
-  const configs = assign({}, defaults, options); // => {a: 456, b: 777}
+  // Task3 NO ES6 CLASSES
 
-  // Task 2
-  const obj1 = { prop: 5 };
-  const obj2 = create(obj1);
+  function Pokemon() {
+      this.getType = () => {
+          return this.type
+      };
+      this.getSpecie = () => {
+          return this.specie
+      };
+      this.canFly = () => {
+          return this.canfly
+      };
+  }
 
-  Object.getPrototypeOf(obj2) === obj1; // => true
-  obj2.prop; // => 5
+  function Charmander() {
+      this.canfly = false;
+      this.type = 'Fire';
+      this.specie = 'Lizard Pokémon';
+      this.evolve = () => new Charmeleon();
+      Pokemon.call(this);
+  }
 
+  function Charmeleon() {
+      this.canfly = false;
+      this.specie = 'Flame Pokémon';
+      this.type = 'Fire';
+      this.evolve = () => new Charizard();
+      Pokemon.call(this);
+  }
 
-  // Task3
+  function Charizard() {
+      this.canfly = true;
+      this.specie = 'Flame Pokémon';
+      this.type = 'Fire';
+      this.evolve = () => this;
+      Pokemon.call(this);
+  }
+  Charmander.prototype = Object.create(Pokemon.prototype);
+  Charmander.prototype.constructor = Charmander;
+
+  Charmeleon.prototype = Object.create(Pokemon.prototype);
+  Charmeleon.prototype.constructor = Charmeleon;
+
+  Charizard.prototype = Object.create(Pokemon.prototype);
+  Charizard.prototype.constructor = Charizard;
+
   const charmander = new Charmander();
   const charmeleon = new Charmeleon();
   const charizard = new Charizard();
@@ -30,6 +62,46 @@
   charmander.canFly(); // -> false
   charmander.canFly() === charmeleon.canFly(); // -> true
   charizard.canFly(); // -> true
+
+
+  function Pichu() {
+      this.canfly = false;
+      this.type = 'Electric';
+      this.specie = 'Mouse Pokémon';
+      Pokemon.call(this);
+      this.evolve = () => new Pikachu();
+  }
+
+  function Pikachu() {
+      this.canfly = false;
+      this.specie = 'Mouse Pokémon';
+      this.type = 'Electric';
+
+      Pokemon.call(this);
+      this.evolve = () => new Raichu();
+  }
+
+  function Raichu() {
+      this.canfly = true;
+      this.specie = 'Mouse Pokémon';
+      this.type = 'Electric';
+
+      Pokemon.call(this);
+      this.evolve = () => this;
+  }
+  Pichu.prototype = Object.create(Pokemon.prototype);
+  Pichu.prototype.constructor = Pichu;
+
+  Pikachu.prototype = Object.create(Pokemon.prototype);
+  Pikachu.prototype.constructor = Pikachu;
+
+  Raichu.prototype = Object.create(Pokemon.prototype);
+  Raichu.prototype.constructor = Raichu;
+
+
+  Pokemon.prototype.getPokemonType = function() {
+      return this.type;
+  }
 
   const pichu = new Pichu();
   pichu.getPokemonType(); // => Pichu
