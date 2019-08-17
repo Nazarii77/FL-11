@@ -2,7 +2,6 @@ class Hamburger {
     constructor(type, calories) {
         var bCheeseAdded = false;
         this.type = type;
-        let _calories = this.calories;
         this.getCalories = () => calories;
         this.setCalories = (value) => calories = value;
         this.addCheese = () => {
@@ -17,9 +16,9 @@ class Hamburger {
 }
 
 const myHumburger = new Hamburger('classic', 600);
-console.log(myHumburger.getCalories());
+console.log(myHumburger.getCalories()); // --> 600
 
 myHumburger.addCheese();
-console.log(myHumburger.getCalories());
-myHumburger.addCheese();
-console.log(myHumburger.getCalories());
+console.log(myHumburger.getCalories()); // --> 720
+myHumburger.addCheese(); // --> 'Sorry, you can add Cheese only once'
+console.log(myHumburger.getCalories()); // --> 720

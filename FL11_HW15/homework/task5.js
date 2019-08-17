@@ -3,10 +3,9 @@ class Hamburger {
         var bCheeseAdded = false;
         var bTomatoeAdded = false;
         var bIngredientAdded = false;
-        var iTomatoeAdded = 0;
+        var iTomatoAdded = 0;
 
         this.type = type;
-        let _calories = this.calories;
         this.getCalories = () => calories;
         this.setCalories = (value) => calories = value;
         this.addCheese = () => {
@@ -17,16 +16,16 @@ class Hamburger {
                 console.log("Sorry, you can add Cheese only once");
             }
         };
-        this.addTomatoe = () => {
-            if (iTomatoeAdded <= 1) {
+        this.addTomato = () => {
+            if (iTomatoAdded <= 1) {
                 calories += 20;
-                iTomatoeAdded += 1;
+                iTomatoAdded += 1;
             } else {
                 console.log("Sorry, you can add Tomatoe only twice");
             }
         };
         this.AddSecretIngredient = () => {
-            if (bCheeseAdded || iTomatoeAdded > 0) {
+            if (bCheeseAdded || iTomatoAdded > 0) {
                 console.log("Sorry, you can add secret ingredient only before other ingredients");
             } else if (bIngredientAdded) {
                 console.log("Sorry, you can add secret ingredient only once.");
@@ -40,9 +39,12 @@ class Hamburger {
 }
 
 const myHumburger = new Hamburger('classic', 600);
-console.log(myHumburger);
+
 
 console.log(myHumburger.getCalories());
 myHumburger.AddSecretIngredient();
-myHumburger.AddSecretIngredient();
+myHumburger.AddSecretIngredient(); // --> 'Sorry, you can add secret ingredient only once.'
 console.log(myHumburger.getCalories());
+
+myHumburger.addTomato();
+myHumburger.AddSecretIngredient(); // --> 'Sorry, you can add secret ingredient only before other ingredients'
