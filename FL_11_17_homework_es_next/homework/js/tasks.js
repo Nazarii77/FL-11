@@ -93,11 +93,11 @@ console.log(hideNumber(phonenumber));
 
 
 
-function throwIfMissing() {
+function throwErrorIfMissing() {
         throw new Error('Missing property');
     }
 
-function add(a = throwIfMissing() , b = throwIfMissing()) {
+function add(a = throwErrorIfMissing() , b = throwErrorIfMissing()) {
     return a + b;
 }
 
