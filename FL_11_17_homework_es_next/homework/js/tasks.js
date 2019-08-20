@@ -94,13 +94,39 @@ console.log(hideNumber(phonenumber));
 
 
 function throwErrorIfMissing() {
-        throw new Error('Missing property');
-    }
+    throw new Error('Missing property');
+}
 
-function add(a = throwErrorIfMissing() , b = throwErrorIfMissing()) {
+function add(a = throwErrorIfMissing(), b = throwErrorIfMissing()) {
     return a + b;
 }
 
 console.log(add(1, 3));
 
 console.log(add(1));
+
+
+
+////TODO log in alphabetica order
+
+
+function fetchJson(url) {
+    return fetch(url)
+        .then(request => request.text())
+        .then(text => JSON.parse(text))
+        .catch(error => console.log(`ERROR: ${error.stack}`));
+}
+fetchJson('https://jsonplaceholder.typicode.com/users').then(res => console.log(res))
+
+
+
+async function fetchJsonAsync(url) {
+    try {
+        const request = await fetch(url);
+        const text = await request.text();
+        return JSON.parse(text);
+    } catch (error) {
+        console.log(`ERROR: ${error.stack}`);
+    }
+}
+fetchJsonAsync('https://jsonplaceholder.typicode.com/users').then(res => console.log(res))
