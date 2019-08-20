@@ -92,10 +92,13 @@ console.log(hideNumber(phonenumber));
 
 
 
-function add(a, b) {
-    'use strict';
-    return a + b;
 
+function throwIfMissing() {
+        throw new Error('Missing property');
+    }
+
+function add(a = throwIfMissing() , b = throwIfMissing()) {
+    return a + b;
 }
 
 console.log(add(1, 3));
