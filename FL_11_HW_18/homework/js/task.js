@@ -255,7 +255,7 @@ function deleteToDO(e) {
     }
     let li = e.parentElement.parentElement;
     li.setAttribute('class', 'li-uncheck');
-    //li.setAttribute('style', 'display:none');
+    li.setAttribute('style', 'display:none');
 
     //console.log(e.parentNode.id); 
     var id = e.parentNode.id;
@@ -299,12 +299,14 @@ function ajax_get(url, callback) {
     const listItems = document.querySelectorAll("#root #maindiv .centered #mylist li");
     console.log(listItems)
     for (let i = 0; i < listItems.length; i++) {
+
         //alert (listItems[i].textContent);
         ajax_get('https://api.thecatapi.com/v1/images/search?size=full', function(data) {
             let logo = document.createElement('img');
             logo.setAttribute('src', data[0]["url"]);
             logo.setAttribute('class', 'user-logo');
             listItems[i].appendChild(logo);
+            showLoading();
         });
     }
 

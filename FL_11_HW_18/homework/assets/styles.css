@@ -1,6 +1,7 @@
  ul, li{
 	list-style-type: none;
-	height: 250px;
+	height: 220px;
+  padding-left: 0px;
 }
 
  #root, #add {  
@@ -17,7 +18,7 @@
 .centered {
 	text-align: center;  
 	margin : 10px auto;
-	width: 470px;
+	width: 400px;
 }
  
 .btn-round , .add-input,#cancel-btn , #save-btn {
