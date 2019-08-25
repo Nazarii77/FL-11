@@ -2,13 +2,9 @@ function maxElement(arrayToProcess) {
     return Math.max(...arrayToProcess);
 }
 
-const array = [1, 2, 3, 4, 56, 7, 8, 76, 5, 241, 5, 356, 567, 2];
-
-
 function copyArray(arrayToProcess) {
     return [...arrayToProcess];
 }
-
 
 function addUniqueId(obj) {
     const clone = Object.assign({}, obj, {
@@ -17,35 +13,17 @@ function addUniqueId(obj) {
     return clone;
 }
 
-
-const target1 = {
-    name: 123
-};
-const target2 = {
-    name: 123
-};
-
 function regroupObject(obj) {
     let newObj = {
         university: obj.details.university,
         user: {
-            age: 11,
+            age: obj.details.age,
             firstaname: obj.name,
-            id: 1
+            id: obj.details.id
         }
     };
     return newObj;
-
 }
-
-const oldObj = {
-    name: 'someone',
-    details: {
-        id: 1,
-        age: 11,
-        university: 'UNI'
-    }
-};
 
 
 function findUniqueElements(array) {
@@ -57,8 +35,6 @@ function findUniqueElements(array) {
 function hideNumber(phonenumber) {
     phonenumber = phonenumber.slice(-4);
     return phonenumber.padStart(10, '*');;
-
-
 }
 
 
@@ -69,7 +45,6 @@ function throwErrorIfMissing() {
 function add(a = throwErrorIfMissing(), b = throwErrorIfMissing()) {
     return a + b;
 }
-
 
 sortArrayOfObjects = (arr, key) => {
     return arr.sort((a, b) => {
@@ -103,7 +78,6 @@ function fetchJson(url) {
         })
         .catch(error => console.log(`ERROR: ${error.stack}`));
 }
-
 
 async function fetchJsonAsync(url) {
     try {
