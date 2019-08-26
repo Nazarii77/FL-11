@@ -1,3 +1,4 @@
+ 
 const rootNode = document.getElementById('root');
 
 let maindiv = document.createElement('div');
@@ -18,7 +19,7 @@ let headingAddtext = document.createTextNode('Edit user');
 headingAdd.appendChild(headingAddtext);
 
 let divadd = document.createElement('div');
-divadd.setAttribute('class', 'centered');
+//divadd.setAttribute('class', 'centered');
 divadd.setAttribute('id', 'adddiv');
 divadd.appendChild(headingAdd);
 
@@ -31,6 +32,12 @@ savebtn.setAttribute('id', 'save-btn');
 savebtn.setAttribute('onclick', 'addNewUser(this)');
 savebtn.innerHTML = 'Save changes';
 
+let loadbtn = document.createElement('button');
+loadbtn.setAttribute('id', 'load-posts-btn');
+loadbtn.setAttribute('onclick', 'displayPosts()');
+loadbtn.innerHTML = 'Load Posts';
+
+
 let cancelebtn = document.createElement('button');
 cancelebtn.setAttribute('id', 'cancel-btn');
 cancelebtn.setAttribute('onclick', 'CancelAddToDO()');
@@ -39,13 +46,75 @@ cancelebtn.innerHTML = 'Cancel';
 divadd.appendChild(inputadd);
 divadd.appendChild(cancelebtn);
 divadd.appendChild(savebtn);
+divadd.appendChild(loadbtn);
 
 addNode.appendChild(divadd);
 document.getElementById('adddiv').style.display = 'none';
+ 
 
-
-var copiedList = [];
+let copiedList = [];
 let objectToUpdate = {};
+let postsGlobal = [];
+let commentsGolobal = [];
+let relevantComments = [];
+
+
+function getByValue(arr, value) {
+
+  var result = [];
+
+  arr.forEach(
+  	function(o){ 
+  		if (o.postId === value) 
+  			result.push(o);
+  		} 
+  	); 
+  return result; // or undefined
+
+}
+
+function displayPosts(){
+	let ul = document.createElement('ul');
+	ul.setAttribute('id', 'posts');
+ 
+	for (var i = 0; i < postsGlobal.length; i++){
+	 	let li = document.createElement('li');
+		li.setAttribute('class', 'li-posts');
+		let label = document.createElement('label');
+		label.setAttribute('class', 'label-class'); 
+		//label.setAttribute('for', item.id);
+		label.setAttribute('id', postsGlobal[i].id);
+		let textrecovered = document.createTextNode(postsGlobal[i].body);
+		label.appendChild(textrecovered);
+
+		li.appendChild(label);
+		ul.appendChild(li);
+
+		let p = document.createElement('p');
+		let ptext = document.createTextNode('Comments to this post:');
+		p.appendChild(ptext);	
+		ul.appendChild(p);	
+		let relevantComments = getByValue(commentsGolobal, postsGlobal[i].id);
+ 
+		   for (var j = 0; j< relevantComments.length; j++){
+			 	 if (postsGlobal[i].id === relevantComments[j].postId){
+				   	let li2 = document.createElement('li');
+				   	li2.setAttribute('class', 'ol-comments');
+				   	let commentLabel = document.createElement('label');
+				   	commentLabel.setAttribute('class', 'label-class'); 
+				   	//label.setAttribute('for', item.id);
+				   	commentLabel.setAttribute('id', relevantComments[j].id);
+				   	let textrecoveredComment = document.createTextNode(relevantComments[j].body);
+				   	commentLabel.appendChild(textrecoveredComment);
+				   	li2.appendChild(commentLabel);
+				   	ul.appendChild(li2);
+				 } 
+		  }	
+		
+		divadd.appendChild(ul);
+	}	
+
+}
 
 sortArrayOfObjects = (arr, key) => {
     return arr.sort((a, b) => {
@@ -70,8 +139,6 @@ function getNames(obj) {
     getallLogos();
     return arr;
 }
-
-
 async function fetchJsonAsync(url) {
     try {
         showLoading();
@@ -93,7 +160,6 @@ function updateUser(user) {
     showLoading();
     var id = user.id;
     fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
-
             method: 'PUT',
             body: JSON.stringify({
                 id: id,
@@ -110,7 +176,6 @@ function updateUser(user) {
         .then(json => console.log(json))
 }
 
-
 function deleteOnServer(id) {
     showLoading();
     fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
@@ -118,16 +183,56 @@ function deleteOnServer(id) {
     })
 }
 
+async function getPosts(userId){
+ 	postsGlobal = [];
+    try {
+        showLoading();
+        const posts = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`);
+        const text = await posts.text(); {
+            var objPosts = JSON.parse(text); 
+ 				
+ 				for (var i = 0; i < objPosts.length; i++){
+ 					postsGlobal.push(objPosts[i]);
+ 					getComments(objPosts[i]);
+ 				}
+            //return  objPosts;
+        
+        }
+    } catch (error) {
+        console.log(`ERROR: ${error.stack}`);
+    }  
+
+}
+
+async function getComments(post) {
+	commentsGolobal = [];
+	let postId = post.id;
+	try {
+	showLoading();
+	const comments = await fetch(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`); 
+    const text = await comments.text(); {
+        var objComments = JSON.parse(text); 
+ 			
+ 			for (var i = 0; i < objComments.length; i++){
+ 				commentsGolobal.push(objComments[i]);
+ 			}
+ 			
+ 			//displayPosts(); 
+        }
+    } catch (error) {
+        console.log(`ERROR: ${error.stack}`);
+    }
+    showLoading();
+}
 
 
 function displayList() {
-    fetchJsonAsync('https://jsonplaceholder.typicode.com/users').then(res => console.log(res));
+    fetchJsonAsync('https://jsonplaceholder.typicode.com/users').then(res =>  res);
 }
 
 window.onload = function() {
     displayList();
 }
-
 
 function addUser(name, obj) {
     let li = document.createElement('li');
@@ -155,10 +260,8 @@ function showaddfunc(e) {
     document.getElementById('adddiv').style.display = 'block';
     document.getElementById('add-modify').innerHTML = 'Add user';
     addSwitchMod = 'Add';
-
     editelement = e;
 }
-
 
 function editlabel(e) {
     if (e.parentElement.className === 'li-checked') {
@@ -170,9 +273,11 @@ function editlabel(e) {
         edititemtext = editelement.textContent;
         document.getElementById('todoInput').value = edititemtext;
     }
-    objectToUpdate = copiedList.find(obj => obj.id.toString() === e.id);
+    objectToUpdate = copiedList.find(obj => obj.id.toString() === e.id); 
+     getPosts(e.id);
+      
+     
 }
-
 
 function addNewUser(obj) {
     let inputValue = document.getElementById('todoInput').value;
@@ -207,13 +312,11 @@ function addNewUser(obj) {
         label.setAttribute('for', 'Checkbox' + current_item);
         label.setAttribute('id', 'Checkbox' + current_item);
 
-
         let deletecheckbox = document.createElement('img');
         deletecheckbox.setAttribute('src', 'assets/img/remove-s.jpg');
         deletecheckbox.setAttribute('class', 'deleteimg');
         deletecheckbox.setAttribute('onclick', 'deleteToDO(this)');
         label.appendChild(deletecheckbox);
-
 
         let t = document.createTextNode(inputValue);
         let temp = {};
@@ -224,7 +327,6 @@ function addNewUser(obj) {
         userItems[i] = temp;
 
         localStorage.setItem('todo', JSON.stringify(userItems));
-
 
         let firstchecked = document.getElementsByClassName('li-checked')[0];
         if (firstchecked !== 'undefined') {
@@ -245,7 +347,6 @@ function CancelAddToDO() {
     document.getElementById('adddiv').style.display = 'none';
 }
 
-
 function deleteToDO(e) {
     //to stop click event on beneath label
     let event = window.event
@@ -264,7 +365,6 @@ function deleteToDO(e) {
     e.parentNode.parentNode.removeChild(e.parentNode);
 }
 
-
 const loadingicon = document.getElementById("loadingicon");
 
 function showLoading() {
@@ -273,7 +373,6 @@ function showLoading() {
         loadingicon.className = loadingicon.className.replace("show", "");
     }, 1000);
 }
-
 
 function ajax_get(url, callback) {
     var xmlhttp = new XMLHttpRequest();
@@ -294,10 +393,9 @@ function ajax_get(url, callback) {
     xmlhttp.send();
 }
 
-
  function  getallLogos() {
     const listItems = document.querySelectorAll("#root #maindiv .centered #mylist li");
-    console.log(listItems)
+    
     for (let i = 0; i < listItems.length; i++) {
 
         //alert (listItems[i].textContent);

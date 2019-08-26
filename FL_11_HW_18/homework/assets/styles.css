@@ -169,3 +169,14 @@ input[type=checkbox]:checked + label:before { letter-spacing: 5px; }
   position: relative;
   margin-left: 35%;
 }
+
+.li-posts {
+  margin-top: 100px;
+  width: 100%;
+  height: 165px;
+}
+
+.ol-comments{
+  margin-top: 100px;
+  color: green;
+}
