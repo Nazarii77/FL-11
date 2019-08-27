@@ -32,11 +32,7 @@ savebtn.setAttribute('id', 'save-btn');
 savebtn.setAttribute('onclick', 'addNewUser(this)');
 savebtn.innerHTML = 'Save changes';
 
-let loadbtn = document.createElement('button');
-loadbtn.setAttribute('id', 'load-posts-btn');
-loadbtn.setAttribute('onclick', 'displayPosts()');
-loadbtn.innerHTML = 'Load Posts';
-
+ 
 
 let cancelebtn = document.createElement('button');
 cancelebtn.setAttribute('id', 'cancel-btn');
@@ -45,8 +41,7 @@ cancelebtn.innerHTML = 'Cancel';
 
 divadd.appendChild(inputadd);
 divadd.appendChild(cancelebtn);
-divadd.appendChild(savebtn);
-divadd.appendChild(loadbtn);
+divadd.appendChild(savebtn); 
 
 addNode.appendChild(divadd);
 document.getElementById('adddiv').style.display = 'none';
@@ -55,9 +50,8 @@ document.getElementById('adddiv').style.display = 'none';
 let copiedList = [];
 let objectToUpdate = {};
 let postsGlobal = [];
-let commentsGolobal = [];
-let relevantComments = [];
-
+let relevantCommentsGlobal = [];
+let allCommentsGlobal = [];
 
 function getByValue(arr, value) {
 
@@ -94,17 +88,16 @@ function displayPosts(){
 		let ptext = document.createTextNode('Comments to this post:');
 		p.appendChild(ptext);	
 		ul.appendChild(p);	
-		let relevantComments = getByValue(commentsGolobal, postsGlobal[i].id);
  
-		   for (var j = 0; j< relevantComments.length; j++){
-			 	 if (postsGlobal[i].id === relevantComments[j].postId){
+		   for (var j = 0; j< relevantCommentsGlobal.length; j++){
+			 	 if (postsGlobal[i].id === relevantCommentsGlobal[j].postId){
 				   	let li2 = document.createElement('li');
 				   	li2.setAttribute('class', 'ol-comments');
 				   	let commentLabel = document.createElement('label');
 				   	commentLabel.setAttribute('class', 'label-class'); 
 				   	//label.setAttribute('for', item.id);
-				   	commentLabel.setAttribute('id', relevantComments[j].id);
-				   	let textrecoveredComment = document.createTextNode(relevantComments[j].body);
+				   	commentLabel.setAttribute('id', relevantCommentsGlobal[j].id);
+				   	let textrecoveredComment = document.createTextNode(relevantCommentsGlobal[j].body);
 				   	commentLabel.appendChild(textrecoveredComment);
 				   	li2.appendChild(commentLabel);
 				   	ul.appendChild(li2);
@@ -183,7 +176,7 @@ function deleteOnServer(id) {
     })
 }
 
-async function getPosts(userId){
+async function getPosts(userId ){
  	postsGlobal = [];
     try {
         showLoading();
@@ -195,9 +188,7 @@ async function getPosts(userId){
  					postsGlobal.push(objPosts[i]);
  					getComments(objPosts[i]);
  				}
-            //return  objPosts;
-        
-        }
+        } 
     } catch (error) {
         console.log(`ERROR: ${error.stack}`);
     }  
@@ -205,20 +196,30 @@ async function getPosts(userId){
 }
 
 async function getComments(post) {
-	commentsGolobal = [];
-	let postId = post.id;
+	
 	try {
 	showLoading();
-	const comments = await fetch(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`); 
-    const text = await comments.text(); {
-        var objComments = JSON.parse(text); 
- 			
- 			for (var i = 0; i < objComments.length; i++){
- 				commentsGolobal.push(objComments[i]);
- 			}
- 			
- 			//displayPosts(); 
-        }
+		if (typeof post !== 'undefined'){
+			let postId = post.id;
+			const comments = await fetch(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`); 
+		    const text = await comments.text(); {
+		        var objComments = JSON.parse(text); 
+		 			for (var i = 0; i < objComments.length; i++){
+		 				relevantCommentsGlobal.push(objComments[i]);
+		 			} 		
+ 	
+		        }
+		    
+	    }else{
+	    	const allcomments = await fetch(`https://jsonplaceholder.typicode.com/comments`); 
+		    const text = await allcomments.text(); {
+		        var objComments = JSON.parse(text); 
+		 			for (var i = 0; i < objComments.length; i++){
+		 				allCommentsGlobal.push(objComments[i]);
+		 			} 			
+		        }
+	    }  
+
     } catch (error) {
         console.log(`ERROR: ${error.stack}`);
     }
@@ -264,6 +265,11 @@ function showaddfunc(e) {
 }
 
 function editlabel(e) {
+	let postsToDelete = document.getElementById("posts");
+	if (postsToDelete !== null && postsToDelete!== undefined) {
+		postsToDelete.remove();
+	} 
+	
     if (e.parentElement.className === 'li-checked') {
         document.getElementById('donealert').style.display = 'block';
     } else if (e.parentElement.className === 'li-uncheck') {
@@ -274,9 +280,15 @@ function editlabel(e) {
         document.getElementById('todoInput').value = edititemtext;
     }
     objectToUpdate = copiedList.find(obj => obj.id.toString() === e.id); 
-     getPosts(e.id);
-      
      
+      
+     Promise.all([getPosts(e.id), getComments()]);  
+     
+  	  getPosts(e.id).then(function() {
+           getComments().then(function(){
+           	displayPosts();
+            });
+        });
 }
 
 function addNewUser(obj) {
@@ -363,6 +375,7 @@ function deleteToDO(e) {
     let objToDelete = copiedList.find(obj => obj.id.toString() === id);
     deleteOnServer(id);
     e.parentNode.parentNode.removeChild(e.parentNode);
+    getallLogos();
 }
 
 const loadingicon = document.getElementById("loadingicon");
@@ -394,19 +407,19 @@ function ajax_get(url, callback) {
 }
 
  function  getallLogos() {
-    const listItems = document.querySelectorAll("#root #maindiv .centered #mylist li");
-    
-    for (let i = 0; i < listItems.length; i++) {
+ 	const listItems = document.querySelectorAll("#root #maindiv .centered #mylist li");
+ 	
+ 	for (let i = 0; i < listItems.length; i++) {
 
-        //alert (listItems[i].textContent);
-        ajax_get('https://api.thecatapi.com/v1/images/search?size=full', function(data) {
-            let logo = document.createElement('img');
-            logo.setAttribute('src', data[0]["url"]);
-            logo.setAttribute('class', 'user-logo');
-            listItems[i].appendChild(logo);
-            showLoading();
-        });
-    }
+ 	    //alert (listItems[i].textContent);
+ 	    ajax_get('https://api.thecatapi.com/v1/images/search?size=full', function(data) {
+ 	        let logo = document.createElement('img');
+ 	        logo.setAttribute('src', data[0]["url"]);
+ 	        logo.setAttribute('class', 'user-logo');
+ 	        listItems[i].appendChild(logo);
+ 	        showLoading();
+ 	    });
+ 	}
 
 }
 
