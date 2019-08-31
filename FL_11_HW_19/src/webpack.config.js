@@ -8,6 +8,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const extractCSS = new ExtractTextPlugin('src/sass/styles.sass');
 var PrettierPlugin = require("prettier-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+
 
 const webpack_rules = [];
 const webpackOption = {
@@ -31,9 +33,14 @@ const webpackOption = {
             filename: ('src/dist', '../index.html' )//relative to root of the application
         }),
         new MiniCssExtractPlugin({
-            filename:  path.resolve(__dirname, "css/styles.css"  )
+            filename:'dist/css/styles.css'
         }),
-        new PrettierPlugin()
+        new PrettierPlugin(),
+        new CopyWebpackPlugin([
+            {
+                from: 'img', to:'./../img'
+            }
+        ])
     ],
     optimization:{
         //minimize: false, // <---- disables uglify.

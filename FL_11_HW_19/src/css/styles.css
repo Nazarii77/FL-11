@@ -1,6 +1,19 @@
 .rules, .heading {
   text-align: center; }
 
+.rules1111, .heading111 {
+  text-align: center; }
+
+.inline-buttons, .one-third, .reset {
+  text-align: center; }
+
+.img-max-width {
+  max-width: 100%; }
+
+.inline-buttons .one-third {
+  width: 20%;
+  margin: 20px; }
+
 nav ul {
   margin: 0;
   padding: 0;

@@ -16,15 +16,30 @@
     <!--<script src="js/app.js"></script>-->
     <link rel="shortcut icon" href="#" />
     <script src="js/app.bundle.js"></script>
+    <script src="js/app.js"></script>
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <div class="rules">
+    <div class="container rules">
+      <img class="img-max-width" src="img/img.png" />
       <p>Scissors beats a paper,</p>
       <p>Paper beats rock,</p>
       <p>Rock beats scissors.</p>
       <p>And we play up to three wins!</p>
     </div>
     <h1 class="heading">Let’s play!</h1>
+
+    <div class="inline-buttons" id="main">
+      <p>
+        <button class="one-third button" onclick="choice(this)">Scissors</button>
+        <button class="one-third button" onclick="choice(this)">Paper</button>
+        <button class="one-third button" onclick="choice(this)">Rock</button>
+      </p>
+      <a class="reset" href="#" onclick="newGame()">Reset</a>
+      <div id="results"></div>
+    </div>
+
+
+
   </body>
 </html>
