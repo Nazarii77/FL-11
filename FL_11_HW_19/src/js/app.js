@@ -1,4 +1,4 @@
- let round = 0;
+let round = 0;
 let humanWins = 0;
 let pcWins = 0;
 

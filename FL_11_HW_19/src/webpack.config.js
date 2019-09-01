@@ -46,7 +46,7 @@ const webpackOption = {
             {
                 from: 'img', to:'./img'
             }
-        ]) 
+        ])
     ],
     optimization:{
         //minimize: false, // <---- disables uglify.
