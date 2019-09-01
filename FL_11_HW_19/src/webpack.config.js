@@ -42,11 +42,11 @@ const webpackOption = {
             filename:'/css/styles.css'
         }),
         new PrettierPlugin(),
-        new CopyWebpackPlugin([
+         new CopyWebpackPlugin([
             {
                 from: 'img', to:'./img'
             }
-        ])
+        ]) 
     ],
     optimization:{
         //minimize: false, // <---- disables uglify.
