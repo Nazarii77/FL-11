@@ -19,7 +19,7 @@ const webpackOption = {
             path.resolve(__dirname, './js/app2.js' )/*,
             path.resolve(__dirname, './sass/styles.sass' )*/
         ],
-        '': './css/styles.css'
+        'css/computedCss.js': './css/styles.css'
     },
 
     output: {

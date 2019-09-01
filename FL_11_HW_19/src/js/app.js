@@ -1,4 +1,3 @@
-
 let round = 0;
 let humanWins = 0;
 let pcWins = 0;
@@ -46,7 +45,9 @@ var compare = (human, machine) => {
 choice = e => {
   round++;
   if (round < 4) {
-    var HumanChoice = e.textContent;
+    var str = e.textContent;
+    str = str.replace(/\s/g, "");
+    var HumanChoice = str;
     var ArtificialIntelligence = Math.random();
     var result;
     if (ArtificialIntelligence < 0.34) {
@@ -101,7 +102,9 @@ choice = e => {
     humanWins = 0;
     pcWins = 0;
     var element = document.getElementById("results");
-    element.remove();
+    if (element !== null) {
+      element.remove();
+    }
   };
 
   /*

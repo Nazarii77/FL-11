@@ -1,6 +1,6 @@
-function myFunc2() {
+var myFunc2 = () => {
   console.log("hello2");
-}
+};
 
 myFunc2();
-//prettiier converts to es5 too
+//this will be  converted  to es5 too
