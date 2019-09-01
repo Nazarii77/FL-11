@@ -106,10 +106,4 @@ choice = e => {
       element.remove();
     }
   };
-
-  /*
-
-console.log(HumanChoice)
-console.log(ArtificialIntelligence)
-*/
 };

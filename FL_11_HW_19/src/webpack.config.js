@@ -19,7 +19,11 @@ const webpackOption = {
             path.resolve(__dirname, './js/app2.js' )/*,
             path.resolve(__dirname, './sass/styles.sass' )*/
         ],
-        'css/computedCss.js': './css/styles.css'
+        //  'css/computedCss.js': './css/styles.css'
+        'css/computedCss.js': ['./sass/styles.sass',
+                               './sass/styles.scss',
+                                './sass/styles.less'
+            ]
     },
 
     output: {
@@ -65,12 +69,38 @@ let babelLoader = {
 };
 
 
-let fileLoader = { test: /\.(png|jpg)$/, loader: 'file-loader',
+let fileLoader = {
+                test: /\.(jpg|png|gif|svg)$/,
+                loader: 'image-webpack-loader',
+                // Specify enforce: 'pre' to apply the loader
+                // before url-loader/svg-url-loader
+                // and not duplicate it in rules with them
+                enforce: 'pre',
 
                // In options we can set different things like format
                // and directory to save
                options: {
-                 outputPath: 'img'
+                 outputPath: 'img',
+                   outputPath: 'img',
+                   mozjpeg: {
+                       progressive: true,
+                       quality: 65
+                   },
+                   // optipng.enabled: false will disable optipng
+                   optipng: {
+                       enabled: false,
+                   },
+                   pngquant: {
+                       quality: '65-70',
+                       speed: 4
+                   },
+                   gifsicle: {
+                       interlaced: false,
+                   },
+                   // the webp option will enable WEBP
+                   webp: {
+                       quality: 75
+                   }
 } }
 
 let cssLoader =  {

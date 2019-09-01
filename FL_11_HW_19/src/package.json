@@ -19,6 +19,7 @@
   "dependencies": {
     "autoprefixer": "^9.6.1",
     "copy-webpack-plugin": "^5.0.4",
+    "image-webpack-loader": "^5.0.0",
     "prettier-webpack-plugin": "^1.2.0",
     "uglifyjs-webpack-plugin": "^2.2.0"
   }
