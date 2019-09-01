@@ -1,7 +1,3 @@
-
-module.exports= {
-    plugin:[
-        require('autoprefixer')
-    ]
-
-}
+module.exports = {
+  plugin: [require("autoprefixer")]
+};

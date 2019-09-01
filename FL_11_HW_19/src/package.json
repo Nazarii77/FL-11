@@ -17,6 +17,7 @@
     "webpack-dev-server": "^3.8.0"
   },
   "dependencies": {
+    "autoprefixer": "^9.6.1",
     "copy-webpack-plugin": "^5.0.4",
     "prettier-webpack-plugin": "^1.2.0",
     "uglifyjs-webpack-plugin": "^2.2.0"

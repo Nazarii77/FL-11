@@ -14,15 +14,17 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const webpack_rules = [];
 const webpackOption = {
     entry: {
-        'app': [
+        'js/app.js': [
             path.resolve(__dirname, './js/app.js' ),
             path.resolve(__dirname, './js/app2.js' )/*,
             path.resolve(__dirname, './sass/styles.sass' )*/
-        ]
+        ],
+        '': './css/styles.css'
     },
+
     output: {
-        filename: '[name].bundle.js',
-        path: path.resolve(__dirname , 'dist/js')
+        filename: '[name]',
+        path: path.resolve(__dirname , 'dist/')
     },
 
     plugins: [
@@ -30,15 +32,15 @@ const webpackOption = {
         new HtmlWebpackPlugin({
             title: 'Output Management' ,
             template: 'index.html',
-            filename: ('src/dist', '../index.html' )//relative to root of the application
+            filename: ('src/dist', './index.html' )//relative to root of the application
         }),
         new MiniCssExtractPlugin({
-            filename:'dist/css/styles.css'
+            filename:'/css/styles.css'
         }),
         new PrettierPlugin(),
         new CopyWebpackPlugin([
             {
-                from: 'img', to:'./../img'
+                from: 'img', to:'./img'
             }
         ])
     ],

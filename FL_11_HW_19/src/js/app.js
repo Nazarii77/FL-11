@@ -1,16 +1,10 @@
-var f = () => {
-  "use strict";
-  console.log("hello1");
-};
-
-f();
 
 let round = 0;
 let humanWins = 0;
-let pcWins =0;
+let pcWins = 0;
 
-var compare = (human,machine) =>{
-  var options = human +' vs. ' + machine + ' ';
+var compare = (human, machine) => {
+  var options = human + " vs. " + machine + " ";
   if (human === machine) {
     return options + "It's a tie!";
   }
@@ -19,7 +13,6 @@ var compare = (human,machine) =>{
       // rock wins
       humanWins++;
       return options + "You won!";
-
     } else {
       // paper wins
       pcWins++;
@@ -31,7 +24,6 @@ var compare = (human,machine) =>{
       // paper wins
       humanWins++;
       return options + "You won!";
-
     } else {
       // scissors wins
       pcWins++;
@@ -46,80 +38,75 @@ var compare = (human,machine) =>{
     } else {
       // scissors wins
       humanWins++;
-      return options +  "You won!";
+      return options + "You won!";
+    }
+  }
+};
+
+choice = e => {
+  round++;
+  if (round < 4) {
+    var HumanChoice = e.textContent;
+    var ArtificialIntelligence = Math.random();
+    var result;
+    if (ArtificialIntelligence < 0.34) {
+      ArtificialIntelligence = "Rock";
+    } else if (ArtificialIntelligence <= 0.67) {
+      ArtificialIntelligence = "Paper";
+    } else {
+      ArtificialIntelligence = "Scissors";
+    }
+
+    var element = document.getElementById("results");
+    if (element === null) {
+      var main = document.getElementById("main");
+      let divaddresult = document.createElement("div");
+      divaddresult.setAttribute("id", "results");
+      main.appendChild(divaddresult);
+      element = divaddresult;
+    }
+
+    if (round === 3) {
+      var text =
+        `Round ${round}    ` + compare(HumanChoice, ArtificialIntelligence);
+      if (humanWins === pcWins) {
+        textFinal = " FINAL RESULT: No one won, it is a tie.";
+      } else if (humanWins > pcWins) {
+        textFinal = " FINAL RESULT:  You WON!!!";
+      } else {
+        textFinal = " FINAL RESULT: COMPUTER WON!!!";
+      }
+
+      var node = document.createTextNode(text);
+      var para = document.createElement("p");
+      para.appendChild(node);
+      element.appendChild(para);
+
+      var nodefinal = document.createTextNode(textFinal);
+      var parafinal = document.createElement("p");
+      parafinal.appendChild(nodefinal);
+      element.appendChild(parafinal);
+    } else {
+      var node = document.createTextNode(
+        `Round ${round}    ` + compare(HumanChoice, ArtificialIntelligence)
+      );
+      var para = document.createElement("p");
+      para.appendChild(node);
+      element.appendChild(para);
     }
   }
 
-
-};
-
-
-choice = (e) =>{
-  round++;
-  if (round < 4) {
-      var HumanChoice = e.textContent;
-      var ArtificialIntelligence = Math.random();
-      var result;
-      if (ArtificialIntelligence < 0.34) {
-        ArtificialIntelligence = "Rock";
-      } else if (ArtificialIntelligence <= 0.67) {
-        ArtificialIntelligence = "Paper";
-      } else {
-        ArtificialIntelligence = "Scissors";
-      }
-
-      var element = document.getElementById("results");
-       if (element === null){
-            var main = document.getElementById("main");
-            let divaddresult = document.createElement('div');
-            divaddresult.setAttribute('id', 'results');
-            main.appendChild(divaddresult);
-            element = divaddresult;
-          }
-
-      if (round === 3){
-        var text = `Round ${round}    ` + compare(HumanChoice,ArtificialIntelligence);
-        if (humanWins === pcWins){
-          textFinal =  ' FINAL RESULT: No one won, it is a tie.'
-        } else if (humanWins>pcWins){
-          textFinal =  ' FINAL RESULT:  You WON!!!'
-        } else {
-          textFinal =  " FINAL RESULT: COMPUTER WON!!!"
-        }
-
-        var node = document.createTextNode(text);
-        var para = document.createElement("p");
-        para.appendChild(node);
-        element.appendChild(para);
-
-        var nodefinal = document.createTextNode(textFinal);
-        var parafinal = document.createElement("p");
-        parafinal.appendChild(nodefinal);
-        element.appendChild(parafinal);
-      } else{
-
-          var node = document.createTextNode(`Round ${round}    ` + compare(HumanChoice,ArtificialIntelligence));
-          var para = document.createElement("p");
-          para.appendChild(node);
-          element.appendChild(para);
-      }
-
-  }
-
   newGame = () => {
-        round = 0;
-        humanWins = 0;
-        pcWins =0;
+    round = 0;
+    humanWins = 0;
+    pcWins = 0;
     var element = document.getElementById("results");
     element.remove();
-  }
+  };
 
-
-
-/*
+  /*
 
 console.log(HumanChoice)
 console.log(ArtificialIntelligence)
 */
-
-}
+};
