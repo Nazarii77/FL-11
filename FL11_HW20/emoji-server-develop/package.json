@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js"
   },
-  "author": "Roman Mahotskyi",
+  "author": "Roman Mahotskyi and homework20 logic by Nazarii Boichyshyn",
   "license": "ISC",
   "dependencies": {
     "json-server": "^0.15.0"

@@ -1,5 +1,5 @@
 .emojiContainer {
-  max-width: 1000px;
+  max-width: 700px;
   margin: 0 auto;
   margin-top: 40px;
 }
@@ -12,6 +12,7 @@
 .emojiList {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .searchContainer {
@@ -35,4 +36,20 @@
 
 .headline {
   font-family: Arial, Helvetica, sans-serif;
+  margin-left: 25px;
+}
+
+.promoContainer{
+  background-color: aliceblue;
+  margin-left: 4em;
+  margin-right: 4em;
+}
+
+.promoButton{
+
+}
+
+.rating{
+  content: "\2605";
+  position: absolute;
 }
