@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {EmojiPreview} from './emoji-preview';
 import {fetchEmoji} from './emoji.api';
 import classes from './emoji.module.scss';
-import {EmojiFilter} from './emoji-filter';
+
 
 export class Emoji extends Component {
 
