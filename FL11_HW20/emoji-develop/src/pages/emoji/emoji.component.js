@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import {EmojiPreview} from './emoji-preview';
+import {EmojiPromo} from './emoji-promo';
 import {fetchEmoji} from './emoji.api';
 import classes from './emoji.module.scss';
 
@@ -84,25 +85,33 @@ export class Emoji extends Component {
     }
 
     render() {
-
+        var random = Math.floor(Math.random() * 6) + 1  ;
         return (
             <div className={classes.emojiContainer}>
-              {/*  <div className={classes.searchContainer}>
-                    <input className={classes.searchInput} placeholder="Search..." type="text"
-                           onChange={this.handleSearchChange} value={this.state.search}/>
-                    {!!this.state.search &&
-                    <p className={classes.searchResults}>Found: {this.state.foundEmoji}/{this.state.filteredEmoji.length}</p>}
-                </div>*/}
-                <div className={classes.promoContainer}>
-                    <h2 className={classes.headline}>New! "Face unwell" pack</h2>
-                    <h3 className={classes.headline}>includes</h3>
-          {/*          <span className={classes.promoButton}><button></button></span>*/}
 
-                {/*    <EmojiFilter
-                        options={this.state.categories}
-                        selectedOptions={this.state.selectedCategories}
-                        onChange={this.handleCategoryChange}
-                    />*/}
+                <div className={classes.promoContainer}>
+
+
+                    <div className={classes.emojiListContainer}>
+                        {/*<h2 className={classes.headline}>Emoji {this.state.filteredEmoji.length && `(${this.state.filteredEmoji.length})`}</h2>*/}
+
+                        <div className={classes.emojiList}>
+                            {
+                                      this.state.filteredEmoji.slice(random-1,random).map(function(emoji){
+                                      return <EmojiPromo key={emoji.id}
+                                                         emoji={emoji}
+
+                                      />
+                                    })
+
+
+
+                            }
+                        </div>
+                    </div>
+
+
+
                 </div>
                 <div className={classes.emojiListContainer}>
                     {/*<h2 className={classes.headline}>Emoji {this.state.filteredEmoji.length && `(${this.state.filteredEmoji.length})`}</h2>*/}

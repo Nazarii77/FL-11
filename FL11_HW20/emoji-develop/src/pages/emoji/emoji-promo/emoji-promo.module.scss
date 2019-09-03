@@ -1,0 +1,88 @@
+.highlighter {
+  background: #cae7ff;
+}
+
+.emojiContainer {
+  display: flex;
+  flex-flow: column;
+  width: 470px;
+  padding: 10px;
+  margin: 5px;
+  transition: all .05s linear;
+
+  &:hover {
+    // background: #ccc;
+    cursor: pointer;
+    transform: scale(1.2)
+  }
+}
+
+.charContainer {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #fefefe;
+}
+
+.char {
+  font-size: 35px;
+}
+.char2 {
+  font-size: 25px;
+  position: relative;
+  margin-top: -28px;
+  margin-left: 34px;
+}
+
+.char3 {
+  font-size: 20px;
+  position: relative;
+  margin-top: -15px;
+  margin-left: 15px;
+}
+
+.name {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 5px 0;
+  text-transform: capitalize;
+  font-size: 12px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.codes {
+  margin: 0;
+  font-size: 12px;
+}
+
+.price{
+  background-color: #0099FF;
+  width: 80px;
+  height: 30px;
+  border-radius: 7px;
+  color: white;
+  border-width: 0px;
+  position: relative;
+  left: 28em;
+}
+.price::before {
+  content: "Get (";
+}
+.price::after {
+  content: "$)";
+}
+
+.price:focus {
+  background-color:lightgray;
+}
+
+.charinline{
+ text-align: left;
+}
+
+.headline{
+  margin: 5px;
+}

@@ -1,0 +1,1 @@
+export { EmojiPromo } from './emoji-promo.component';

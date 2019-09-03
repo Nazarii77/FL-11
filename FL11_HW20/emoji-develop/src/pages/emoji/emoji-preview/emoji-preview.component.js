@@ -14,12 +14,12 @@ function getStars(rating) {
         output.push(' <i class="fa fa-star" aria-hidden="true" style="color: gold;"></i>&nbsp; ');
 
     // If there is a half a star, append it
-    if (i == .5) output.push(' <i class="fa fa-star-half-o" aria-hidden="true" style="color: gold;"></i>&nbsp; ');
+    if (i === .5) output.push(' <i class="fa fa-star-half-o" aria-hidden="true" style="color: gold;"></i>&nbsp; ');
 
     // Fill the empty stars
     for (let i = (5 - rating); i >= 1; i--)
         output.push(' <i class="fa fa-star-o" aria-hidden="true" style="color: gold;"></i>&nbsp; ');
-    console.log(output.join(''))
+
     return output.join('');
 
 }
@@ -59,11 +59,6 @@ EmojiPreview.propTypes = {
     name: PropTypes.string,
     category: PropTypes.string,*/
 
-/*    "id": 1,
-    "title": "Bugs pack!",
-    "stars": 5,
-    "price": 1,
-    "emoji": [*/
   }).isRequired,
   highlight: PropTypes.bool
 };
