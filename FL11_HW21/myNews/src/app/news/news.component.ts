@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {MenuComponent} from "../menu/menu.component";
+
+
 export interface News {
   title:string
   description:string
@@ -37,6 +40,9 @@ export class NewsComponent implements OnInit {
     }
 
 ]
+  /*filter: any;*/
+/*  searchText: string;*/
+  @Input()  searchText: any;
   constructor() { }
 
   ngOnInit() {

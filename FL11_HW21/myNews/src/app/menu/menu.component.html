@@ -15,7 +15,9 @@
         </div>
       </li>
       <li>
-        <input class= "filter" type="text" name="" value="Filter">
+        <!--<input class= "filter" type="text" name="" value="Filter">-->
+   <!-- [(ngModel)]="searchText"-->     <input class=" filter form-control" type="text" name="searchText" [(ngModel)]="searchText" (click)="highlightSelected(searchText)"
+                                               autocomplete="off" placeholder="Start searching...">
 
       </li>
       <li><a href="javascript:void(0)" class="dropbtn">Filter</a></li>

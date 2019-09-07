@@ -8,6 +8,7 @@ import {News} from "../news/news.component";
 })
 export class NewslistComponent implements OnInit {
  @Input() news : News[];
+ @Input() searchText;
   constructor() { }
 
   ngOnInit() {
