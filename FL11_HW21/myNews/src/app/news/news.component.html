@@ -1,15 +1,18 @@
 <app-newslist [news]="news"></app-newslist>
 
+<div class="image">
+  <ul>
+    <li *ngFor="let item of news; let  i = index">
 
-<ul>
-  <li *ngFor="let item of news; let  i = index">
+      <h3>{{item.title}}</h3>
+      <br>
+      <img class="image" src="{{item.avatarUrl}}" alt="">
+      <br>
+      {{item.description}}
+    </li>
+      <br>
 
-    {{item.title}}
-    <br>
-    {{item.description}}
-  </li>
-    <br>
-
-</ul>
+  </ul>
+</div>
 
 <!--<p>news works!</p>-->
