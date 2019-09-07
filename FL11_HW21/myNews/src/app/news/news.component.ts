@@ -42,10 +42,15 @@ export class NewsComponent implements OnInit {
 ]
   /*filter: any;*/
 /*  searchText: string;*/
-  @Input()  searchText: any;
+  @Input()  searchText : any;
+
   constructor() { }
 
   ngOnInit() {
   }
+  highlightSelected(searchText) {
+    console.log(searchText);
+    // your rest code goes here
 
+  }
 }

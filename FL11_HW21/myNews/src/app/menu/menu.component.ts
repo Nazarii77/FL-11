@@ -17,10 +17,12 @@ interface searchText {
 export class MenuComponent implements OnInit {
   @Input() news : News[];
  /* @Input() searchText : string  ;*/
-  @Input()  searchText: any;
+ /* @Input()  searchText: any;*/
   // @ts-ignore
   @Output() searchTextChange = new EventEmitter<searchText>();
+  searchText: string = '';
 
+  //setValue() { this.searchText = 'War'; }
   constructor() { }
 
   ngOnInit() {
