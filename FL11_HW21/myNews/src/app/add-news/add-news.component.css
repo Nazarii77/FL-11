@@ -1,0 +1,16 @@
+@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+
+.heading{
+  text-align: center;
+}
+.narrow{
+  max-width: 700px;
+}
+
+.btn-cancel{
+  margin-left: 20px;
+}
+
+.btn{
+  float: right;
+}

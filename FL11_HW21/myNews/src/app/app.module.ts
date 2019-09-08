@@ -11,7 +11,8 @@ import {FormsModule} from '@angular/forms';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import { ParentComponent } from './parent/parent.component';
 import { SiblingComponent } from './sibling/sibling.component';
-import { DataService } from 'data.service';
+import { DataService } from './data.service';
+import { AddNewsComponent } from './add-news/add-news.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DataService } from 'data.service';
     NewslistComponent,
     NewsComponent,
     ParentComponent,
-    SiblingComponent
+    SiblingComponent,
+    AddNewsComponent
   ],
   imports: [
     BrowserModule,
