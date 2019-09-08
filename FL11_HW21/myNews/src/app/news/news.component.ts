@@ -37,8 +37,7 @@ export class NewsComponent implements OnInit {
     {
       title: 'War in Syria',
       // tslint:disable-next-line:max-line-length
-      avatarUrl: 'https://img.thedailybeast.com/image/upload/c_crop,d_placeholder_euli9k,h_1439,w_2560,x_0,y_0/dpr_1.5/c_limit,w_1044/fl_lossy,q_auto/v1492186983/articles/2015/01/26/ukraine-is-losing-the-war-on-3-fronts/150126-weiss-ukraine-tease_ylzsql',
-      // tslint:disable-next-line:max-line-length
+      avatarUrl: 'https://e3.365dm.com/18/09/736x414/skynews-syria-rebels-douma_4426051.jpg?20180919091305',
       description: 'is an ongoing multi-sided civil war in Syria fought between the Ba\'athist Syrian Arab Republic led by President Bashar al-Assad, along with domestic and foreign allies, and various domestic and foreign forces opposing both the Syrian government and each other in varying combinations.'
 
     }
