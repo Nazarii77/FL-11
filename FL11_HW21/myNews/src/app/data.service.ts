@@ -10,7 +10,7 @@ export class DataService {
 @Injectable()
 export class DataService {
 
-  private messageSource = new BehaviorSubject('default message');
+  private messageSource = new BehaviorSubject('News');
   currentMessage = this.messageSource.asObservable();
 
   constructor() { }

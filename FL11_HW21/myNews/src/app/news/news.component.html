@@ -5,7 +5,7 @@
     <li *ngFor="let item of news | filter: searchText"> <!--; let  i = index; -->
 <!--<tr *ngFor="let hero of heroes | filter:searchText">-->
       <h3 > {{item.title}}</h3>
-      
+
       <img class="image" src="{{item.avatarUrl}}" alt="">
       <br>
       {{item.description}}
