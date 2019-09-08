@@ -18,8 +18,8 @@ export class MenuComponent implements OnInit {
  /* @Input() searchText : string  ;*/
  /* @Input()  searchText: any;*/
   // @ts-ignore
-  @Output() searchTextChange = new EventEmitter<searchText>();
-  @Output() searchText = 'war';
+  // @Output() searchTextChange = new EventEmitter<searchText>();
+  @Output() searchText  ;
 
   // setValue() { this.searchText = 'War'; }
   constructor() { }
