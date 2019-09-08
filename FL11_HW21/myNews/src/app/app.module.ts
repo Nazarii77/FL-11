@@ -7,15 +7,20 @@ import { MenuComponent } from './menu/menu.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NewslistComponent } from './newslist/newslist.component';
 import { NewsComponent } from './news/news.component';
-import {FormsModule} from "@angular/forms";
-import {Ng2SearchPipeModule} from "ng2-search-filter";
+import {FormsModule} from '@angular/forms';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import { ParentComponent } from './parent/parent.component';
+import { SiblingComponent } from './sibling/sibling.component';
+import { DataService } from 'data.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     NewslistComponent,
-    NewsComponent
+    NewsComponent,
+    ParentComponent,
+    SiblingComponent
   ],
   imports: [
     BrowserModule,
