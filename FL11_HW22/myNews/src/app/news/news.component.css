@@ -1,0 +1,29 @@
+.image{
+  width: 100%;
+  display: flex;
+  line-height: 2;
+}
+
+
+.center{
+  width: 100%;
+  display: flex;
+  line-height: 2;
+}
+
+ul{
+margin: auto;
+}
+
+li{
+  max-width: 500px;
+  text-align: justify;
+  list-style: none;
+}
+
+.feed{
+  line-height: 1.5;
+  padding-bottom: 3rem;
+
+  display: flex;
+}
