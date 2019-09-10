@@ -1,21 +1,34 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MenuComponent} from '../menu/menu.component';
 import * as firebase from "firebase";
+import {AngularFireDatabase} from "@angular/fire/database";
+import {database} from "firebase";
 
 
 export interface News {
   title: string;
   description: string;
   avatarUrl?: string;
+  //news:[];
 
 }
+
+export class news {
+  title: string;
+  description: string;
+  avatarUrl?: string;
+
+
+}
+
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.css']
 })
 export class NewsComponent implements OnInit {
-  public news: News[] = [
+  //[{ avatarUrl: string; description: string; title: string }];
+  public news:   News[]=  [
      {
       title: 'Fashion week in Paris',
       avatarUrl: 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/03/05/11/gettyimages-1133769350-1.jpg',
@@ -47,13 +60,66 @@ export class NewsComponent implements OnInit {
   /*filter: any;*/
 /*  searchText: string;*/
  @Input() searchText: any;
+  @Input() news2: any;
+  @Input() name: string;
+  constructor( ) {
+  /*  (this.news)   = [  {
+      title: 'War in Syria',
+      // tslint:disable-next-line:max-line-length
+      avatarUrl: 'https://e3.365dm.com/18/09/736x414/skynews-syria-rebels-douma_4426051.jpg?20180919091305',
+      description: 'is an ongoing multi-sided civil war in Syria fought between the Ba\'athist Syrian Arab Republic led by President Bashar al-Assad, along with domestic and foreign allies, and various domestic and foreign forces opposing both the Syrian government and each other in varying combinations.'
 
-  constructor() { }
+    }];*/
+
+
+
+
+  }
 
   ngOnInit() {
 
       //window.location.reload();
 
+     this.news =  [
+      {
+        title: 'Fashion week in Madrid',
+        avatarUrl: 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/03/05/11/gettyimages-1133769350-1.jpg',
+        description: 'Chanel paid homage to the late Karl Lagerfeld on Tuesday morning by beginning its highly-anticipated Paris Fashion Week show with a minute’s silence.\n' +
+          '\n' +
+          'Lagerfeld, who died on 19 February aged 85, had been creative director at the luxury French fashion house for more than 30 years.\n' +
+          '\n' +
+          'Under his reign, the brand became synonymous with unbridled grandeur, complete with opulent accessories, A-list muses, and spectacular catwalk settings.'
+      },
+      {
+        title: 'War in Ukraine',
+        avatarUrl: 'https://cdn.images.express.co.uk/img/dynamic/78/590x/secondary/ukraine-515781.jpg',
+        // tslint:disable-next-line:max-line-length
+        description: 'The Russian military intervention in Ukraine, sometimes called the Russo-Ukrainian War,  is a series of military actions that started in February 2014 and continues into 2019, including in the Crimean peninsula, the Donbas region in eastern Ukraine, and related activities in other locations.\n' +
+          '\n' +
+          // tslint:disable-next-line:max-line-length
+          'After Euromaidan protests and the fall of Ukrainian president Viktor Yanukovych, Russian soldiers without insignias took control of strategic positions and infrastructure within the Ukrainian territory of Crimea.'
+
+      },
+      {
+        title: 'War in Syria',
+        // tslint:disable-next-line:max-line-length
+        avatarUrl: 'https://e3.365dm.com/18/09/736x414/skynews-syria-rebels-douma_4426051.jpg?20180919091305',
+        description: 'is an ongoing multi-sided civil war in Syria fought between the Ba\'athist Syrian Arab Republic led by President Bashar al-Assad, along with domestic and foreign allies, and various domestic and foreign forces opposing both the Syrian government and each other in varying combinations.'
+
+      }
+
+    ];
+
+
+    let customObj = { title: 'Fashion week in Paris3',
+      avatarUrl: 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/03/05/11/gettyimages-1133769350-1.jpg',
+      description: 'Chanel paid homage to the late Karl Lagerfeld on Tuesday morning by beginning its highly-anticipated Paris Fashion Week show with a minute’s silence.\n' +
+        '\n' +
+        'Lagerfeld, who died on 19 February aged 85, had been creative director at the luxury French fashion house for more than 30 years.\n' +
+        '\n' +
+        'Under his reign, the brand became synonymous with unbridled grandeur, complete with opulent accessories, A-list muses, and spectacular catwalk settings.'
+    }
+    /*this.news.push(customObj);*/
 
 
     var config = {
@@ -70,14 +136,58 @@ export class NewsComponent implements OnInit {
     var databaseRef = firebase.database().ref('news/');
     console.log(databaseRef)
 
+    // @ts-ignore
+    let loadednews :  News [] =  [{   }];
+
     databaseRef.once('value', function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var childKey = childSnapshot.key;
         var childData = childSnapshot.val();
 
-        console.log(childData.news_title);
-        console.log(childData.news_image);
-        console.log(childData.news_description);
+        //console.log(typeof(childData.news_title))
+
+        /*  console.log(childData.news_title);
+          console.log(childData.news_image);
+          console.log(childData.news_description);*/
+
+            customObj = {
+           title :    childData.news_title,
+          avatarUrl: childData.news_image,
+          description:  childData.news_description
+        }
+         loadednews.push(customObj);
+
+         //this.news.push(customObj);
+
+        loadednews.push(
+
+        {
+          title: 'Fashion week in Madrid',
+            avatarUrl: 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/03/05/11/gettyimages-1133769350-1.jpg',
+          description: 'Chanel paid homage to the late Karl Lagerfeld on Tuesday morning by beginning its highly-anticipated Paris Fashion Week show with a minute’s silence.\n' +
+        '\n' +
+        'Lagerfeld, who died on 19 February aged 85, had been creative director at the luxury French fashion house for more than 30 years.\n' +
+        '\n' +
+        'Under his reign, the brand became synonymous with unbridled grandeur, complete with opulent accessories, A-list muses, and spectacular catwalk settings.'
+        }
+        );
+
+     /*   let  news  = [  {
+              title: childData.news_title,
+              // tslint:disable-next-line:max-line-length
+              avatarUrl: childData.news_image,
+              description:  childData.news_description
+            }];*/
+
+
+        /*(this.News) = this.News + [{
+          title: 'War in Syria',
+          // tslint:disable-next-line:max-line-length
+          avatarUrl: 'https://e3.365dm.com/18/09/736x414/skynews-syria-rebels-douma_4426051.jpg?20180919091305',
+          description: 'is an ongoing multi-sided civil war in Syria fought between the Ba\'athist Syrian Arab Republic led by President Bashar al-Assad, along with domestic and foreign allies, and various domestic and foreign forces opposing both the Syrian government and each other in varying combinations.'
+
+        }];*/
+          //console.log(news2)
         /* (this.News) = [
           {
             title: 'Fashion week in Paris2222',
@@ -101,7 +211,18 @@ export class NewsComponent implements OnInit {
         rowIndex = rowIndex + 1;
       });
     });
+    // @ts-ignore
+    console.log(loadednews)
+    // @ts-ignore
+    console.log(loadednews[0].title )
+    console.log(loadednews[0].description )
 
+
+    this.news.push({
+      title: loadednews[0].title,
+      avatarUrl: loadednews[0].avatarUrl,
+      description:    loadednews[0].description   }
+      );
 
 
   }
