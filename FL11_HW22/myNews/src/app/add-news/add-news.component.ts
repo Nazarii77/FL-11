@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as firebase from "firebase";
 
 function reload_page() {
+  location.reload();
 
 }
 
@@ -44,7 +45,7 @@ export class AddNewsComponent implements OnInit {
       var updates = {};
       updates['/news/' + uid] = data;
       firebase.database().ref().update(updates);
-      //alert('The news are created successfully!');
+      //alert('News are created successfully!');
       reload_page();
     }
 
@@ -67,7 +68,23 @@ export class AddNewsComponent implements OnInit {
     updates['/news/' + uid] = data;
     firebase.database().ref().update(updates);
 
-    
+    reload_page();
     // your rest code goes here
+  }
+
+  reload_page() {
+   // location.reload();
+    var config = {
+      apiKey: "AIzaSyAb00uV8OFWO6p3mkaPzPwwLp6b6R5_x8U",
+      authDomain: "mynews-f6a2e.firebaseapp.com",
+      databaseURL: "https://mynews-f6a2e.firebaseio.com",
+      projectId: "mynews-f6a2e",
+      storageBucket: "mynews-f6a2e.appspot.com",
+      messagingSenderId: "646343721329",
+      appId: "1:646343721329:web:845d14429eb077cb0fb6d0"
+    };
+    firebase.initializeApp(config);
+     var databaseRef = firebase.database().ref('news/');
+
   }
 }

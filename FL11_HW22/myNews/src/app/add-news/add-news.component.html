@@ -17,10 +17,10 @@ news_title: news_title
       <input type="text" class="form-control" id="news_title" required>
     </div>
 
-    <div class="form-group">
+    <!--<div class="form-group">
       <label for="news_description2">Short description</label>
       <input type="text" class="form-control" id="news_description2">
-    </div>
+    </div>-->
 
     <div class="form-group">
       <label for="news_image">Image URL</label>
@@ -35,7 +35,7 @@ news_title: news_title
       <textarea class="form-control" rows="9" id="news_description"></textarea>
     </div>
 
-    <button type="submit" class="btn btn-cancel" [routerLink] = "'/'">Cancel</button>
+    <button type="submit" class="btn btn-cancel" (click)= "reload_page()" [routerLink] = "'/'">Cancel</button>
     <button type="submit" class="btn btn-success"  (click)= "save()" >Save</button>
 
 

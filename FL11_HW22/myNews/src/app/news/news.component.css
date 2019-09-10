@@ -27,3 +27,9 @@ li{
 
   display: flex;
 }
+
+
+.centered{
+  display: block;
+  margin: auto;
+}

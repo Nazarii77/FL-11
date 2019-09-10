@@ -52,6 +52,10 @@ export class NewsComponent implements OnInit {
 
   ngOnInit() {
 
+      //window.location.reload();
+
+
+
     var config = {
       apiKey: "AIzaSyAb00uV8OFWO6p3mkaPzPwwLp6b6R5_x8U",
       authDomain: "mynews-f6a2e.firebaseapp.com",
@@ -105,5 +109,9 @@ export class NewsComponent implements OnInit {
     console.log(searchText);
     // your rest code goes here
 
+  }
+
+  reload_page() {
+    document.location.reload();
   }
 }
