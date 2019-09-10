@@ -1,0 +1,25 @@
+.box{
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    background: yellowgreen;
+    margin: 2px;
+    float:left;
+    }
+    p{
+    border: 1px dotted black;
+    margin: 2px;
+    }
+    .control_panel, .container{
+        width: 800px;
+        float: bottom;
+        }
+        .submit{
+        border: 1px dotted grey;
+        margin: 2px;
+        padding: 2px;
+        display: inline-block;
+        }
+        div{
+        float: left;
+        }
