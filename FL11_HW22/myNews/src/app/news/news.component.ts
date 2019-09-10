@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MenuComponent} from '../menu/menu.component';
+import * as firebase from "firebase";
 
 
 export interface News {
@@ -50,6 +51,55 @@ export class NewsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
+    var config = {
+      apiKey: "AIzaSyAb00uV8OFWO6p3mkaPzPwwLp6b6R5_x8U",
+      authDomain: "mynews-f6a2e.firebaseapp.com",
+      databaseURL: "https://mynews-f6a2e.firebaseio.com",
+      projectId: "mynews-f6a2e",
+      storageBucket: "mynews-f6a2e.appspot.com",
+      messagingSenderId: "646343721329",
+      appId: "1:646343721329:web:845d14429eb077cb0fb6d0"
+    };
+    firebase.initializeApp(config);
+    var tblNews = document.getElementById('tbl_news_list');
+    var databaseRef = firebase.database().ref('news/');
+    console.log(databaseRef)
+
+    databaseRef.once('value', function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var childKey = childSnapshot.key;
+        var childData = childSnapshot.val();
+
+        console.log(childData.news_title);
+        console.log(childData.news_image);
+        console.log(childData.news_description);
+        /* (this.News) = [
+          {
+            title: 'Fashion week in Paris2222',
+            avatarUrl: 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/03/05/11/gettyimages-1133769350-1.jpg',
+            description: 'Chanel paid homage to the late Karl Lagerfeld on Tuesday morning by beginning its highly-anticipated Paris Fashion Week show with a minute’s silence.\n' +
+              '\n' +
+              'Lagerfeld, who died on 19 February aged 85, had been creative director at the luxury French fashion house for more than 30 years.\n' +
+              '\n' +
+              'Under his reign, the brand became synonymous with unbridled grandeur, complete with opulent accessories, A-list muses, and spectacular catwalk settings.'
+          }]*/
+        var rowIndex = 1;
+         var row = tblNews.insertRow(rowIndex);
+        var cellId = row.insertCell(0);
+        var cellName = row.insertCell(1);
+        var cellimage = row.insertCell(2);
+        var cellDescription = row.insertCell(3);
+        cellId.appendChild(document.createTextNode(childKey));
+        cellName.appendChild(document.createTextNode(childData.news_title));
+        cellimage.appendChild(document.createTextNode(childData.news_image));
+        cellDescription.appendChild(document.createTextNode(childData.news_description));
+        rowIndex = rowIndex + 1;
+      });
+    });
+
+
+
   }
   highlightSelected(searchText) {
     console.log(searchText);

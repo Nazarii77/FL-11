@@ -1,44 +1,12 @@
-<script>
-    var config = {
-        apiKey: "AIzaSyAb00uV8OFWO6p3mkaPzPwwLp6b6R5_x8U",
-        authDomain: "mynews-f6a2e.firebaseapp.com",
-        databaseURL: "https://mynews-f6a2e.firebaseio.com",
-        projectId: "mynews-f6a2e",
-        storageBucket: "mynews-f6a2e.appspot.com",
-        messagingSenderId: "646343721329",
-        appId: "1:646343721329:web:845d14429eb077cb0fb6d0"
-    };
-    firebase.initializeApp(config);
-    var tblNews = document.getElementById('tbl_news_list');
-    var databaseRef = firebase.database().ref('news/');
-    var rowIndex = 1;
-    databaseRef.once('value', function(snapshot) {
-        snapshot.forEach(function(childSnapshot) {
-            var childKey = childSnapshot.key;
-            var childData = childSnapshot.val();
-            var row = tblNews.insertRow(rowIndex);
-            var cellId = row.insertCell(0);
-            var cellName = row.insertCell(1);
-            cellId.appendChild(document.createTextNode(childKey));
-            cellName.appendChild(document.createTextNode(childData.news_title));
-            rowIndex = rowIndex + 1;
-        });
-    });
-    function save_news(){
-        var news_title = document.getElementById('news_title').value;
-        var uid = firebase.database().ref().child('news').push().key;
-        var data = {
-            news_id: uid,
-            news_title: news_title
-        }
-        var updates = {};
-        updates['/news/' + uid] = data;
-        firebase.database().ref().update(updates);
-        //alert('The news are created successfully!');
-        reload_page();
-    }
-console.log('sdsadsd')
- </script>
+<!--
+var news_title = document.getElementById('news_title').value;
+var news_description = document.getElementById('news_description').value;
+var news_image= document.getElementById('news_image').value;
+var uid = firebase.database().ref().child('news').push().key;
+var data = {
+news_id: uid,
+news_title: news_title
+-->
 
 
 <div class="container narrow">
@@ -46,25 +14,25 @@ console.log('sdsadsd')
   <form>
     <div class="form-group">
       <label type="text">Heading</label>
-      <input type="text" class="form-control" id="text" required>
+      <input type="text" class="form-control" id="news_title" required>
     </div>
 
     <div class="form-group">
-      <label for="description">Short description</label>
-      <input type="text" class="form-control" id="description">
+      <label for="news_description2">Short description</label>
+      <input type="text" class="form-control" id="news_description2">
     </div>
 
     <div class="form-group">
-      <label for="image">Image URL</label>
-      <input type="text" class="form-control" id="image">
+      <label for="news_image">Image URL</label>
+      <input type="text" class="form-control" id="news_image">
     </div>
 
 
 
 
     <div class="form-group">
-      <label for="Content">Content:</label>
-      <textarea class="form-control" rows="9" id="Content"></textarea>
+      <label for="news_description">Content:</label>
+      <textarea class="form-control" rows="9" id="news_description"></textarea>
     </div>
 
     <button type="submit" class="btn btn-cancel" [routerLink] = "'/'">Cancel</button>

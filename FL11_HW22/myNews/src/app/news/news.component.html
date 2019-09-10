@@ -2,7 +2,7 @@
 
 <div class="center">
   <ul>
-    <li *ngFor="let item of news | filter: searchText"> <!--; let  i = index; -->
+    <li   *ngFor="let item of news | filter: searchText"> <!--; let  i = index; -->
 <!--<tr *ngFor="let hero of heroes | filter:searchText">-->
       <h3 > {{item.title}}</h3>
 
@@ -14,5 +14,16 @@
 
   </ul>
 </div>
+
+
+<table id="tbl_news_list" border="1">
+  <tr>
+    <td>#ID</td>
+    <td>NAME</td>
+    <td>Image</td>
+    <td>Description</td>
+  </tr>
+
+</table>
 
 <!--<p>news works!</p>-->
