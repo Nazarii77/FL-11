@@ -13,7 +13,13 @@ import { ParentComponent } from './parent/parent.component';
 import { SiblingComponent } from './sibling/sibling.component';
 import { DataService } from './data.service';
 import { AddNewsComponent } from './add-news/add-news.component';
-
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import { Component } from '@angular/core';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { map } from 'rxjs/operators';
+export const firebaseConfig = {
+};
 /*// @ts-ignore
 import { AngularFireModule } from '@angular/fire';
 // @ts-ignore
@@ -36,7 +42,10 @@ import { environment } from 'src/environments/environment';*/
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    Ng2SearchPipeModule/*,
+    Ng2SearchPipeModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule
+    /*,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule*/
   ],
