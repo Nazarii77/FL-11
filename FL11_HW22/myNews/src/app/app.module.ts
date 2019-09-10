@@ -14,6 +14,13 @@ import { SiblingComponent } from './sibling/sibling.component';
 import { DataService } from './data.service';
 import { AddNewsComponent } from './add-news/add-news.component';
 
+/*// @ts-ignore
+import { AngularFireModule } from '@angular/fire';
+// @ts-ignore
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+// @ts-ignore
+import { environment } from 'src/environments/environment';*/
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +36,9 @@ import { AddNewsComponent } from './add-news/add-news.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule/*,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule*/
   ],
   providers: [],
   bootstrap: [AppComponent]
