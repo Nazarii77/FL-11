@@ -1,3 +1,5 @@
+const newGame = require("./app2.js");
+
 let round = 0;
 let humanWins = 0;
 let pcWins = 0;
@@ -97,7 +99,7 @@ choice = e => {
     }
   }
 
-  newGame = () => {
+  /*  newGame = () => {
     round = 0;
     humanWins = 0;
     pcWins = 0;
@@ -105,5 +107,5 @@ choice = e => {
     if (element !== null) {
       element.remove();
     }
-  };
+  };*/
 };
