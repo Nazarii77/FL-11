@@ -8,22 +8,22 @@ class User {
   }
 }
 
-function getDiscount() {
+function getDiscount(cart) {
   const date = new Date();
   const timeNow = date.getHours();
   const dayNow = date.getDay();
   if ((timeNow >= 23) || (timeNow >= 0 && timeNow <= 6)) {
-    this.cart.nightDiscount = 5;
+    cart.nightDiscount = 5;
   }
   if (dayNow === 6 || dayNow === 0) {
-    this.cart.prop.weekendDiscount = 5;
+    cart.weekendDiscount = 5;
   }
 }
 
 function setBonus(cart) {
   let bonus = 0;
   bonus = 5 * Math.floor(cart.orderTotalPrice / 100);
-  this.cart.bonus = bonus;
+  cart.bonus = bonus;
 }
 
 User.prototype.makeOrder = function makeOrder() {
