@@ -12,20 +12,20 @@ function getDiscount(obj) {
   const date = new Date();
   const timeNow = date.getHours();
   const dayNow = date.getDay();
-  const objToModify = obj;
+  const decoratedObj = { ...obj };
   if ((timeNow >= 23) || (timeNow >= 0 && timeNow <= 6)) {
-    objToModify.nightDiscount = 5;
+    decoratedObj.nightDiscount = 5;
   }
   if (dayNow === 6 || dayNow === 0) {
-    objToModify.weekendDiscount = 5;
+    decoratedObj.weekendDiscount = 5;
   }
 }
 
 function setBonus(obj) {
   let bonus = 0;
-  const objToModify = obj;
+  const decoratedObj = { ...obj };
   bonus = 5 * Math.floor(obj.orderTotalPrice / 100);
-  objToModify.bonus = bonus;
+  decoratedObj.bonus = bonus;
 }
 
 User.prototype.makeOrder = function makeOrder() {
