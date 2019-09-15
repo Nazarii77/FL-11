@@ -8,22 +8,24 @@ class User {
   }
 }
 
-function getDiscount(cart) {
+function getDiscount(obj) {
   const date = new Date();
   const timeNow = date.getHours();
   const dayNow = date.getDay();
+  const objToModify = obj;
   if ((timeNow >= 23) || (timeNow >= 0 && timeNow <= 6)) {
-    cart.nightDiscount = 5;
+    objToModify.nightDiscount = 5;
   }
   if (dayNow === 6 || dayNow === 0) {
-    cart.weekendDiscount = 5;
+    objToModify.weekendDiscount = 5;
   }
 }
 
-function setBonus(cart) {
+function setBonus(obj) {
   let bonus = 0;
-  bonus = 5 * Math.floor(cart.orderTotalPrice / 100);
-  cart.bonus = bonus;
+  const objToModify = obj;
+  bonus = 5 * Math.floor(obj.orderTotalPrice / 100);
+  objToModify.bonus = bonus;
 }
 
 User.prototype.makeOrder = function makeOrder() {

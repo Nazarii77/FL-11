@@ -25,7 +25,7 @@ module.exports = {
     "global-require": "off",
     "linebreak-style": "off",
     "no-extra-boolean-cast": "off",
-    "max-len": ["error", {"code":  140}],
-    "no-param-reassign": 0
+    "max-len": ["error", {"code":  140}]//,
+    //"no-param-reassign": 0
   },
 };
