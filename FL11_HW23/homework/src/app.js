@@ -1,74 +1,51 @@
-// The Decorator pattern isn't heavily tied to how objects are created
-// but instead focuses on the problem of extending their functionality.
-
-/*function MacBook() {
-    this.price = 800;
-    this.memory = 8;
-    this.ssd = false;
-    this.size = 11.6;
-
-    this.const = () => console.log(this.price + "$");
+// ///////////////////////////////////////////////////////////////////////////
+class User {
+  constructor(name) {
+    this.name = name;
+    this.orderTotalPrice = 0;
+    this.weekendDiscount = 0;
+    this.nightDiscount = 0;
+    this.bonus = 0;
+  }
 }
 
-function addMemory(macbook) {
-    macbook.price = macbook.price + 100;
-    macbook.memory = 16;
+function getDiscount() {
+  const date = new Date();
+  const timeNow = date.getHours();
+  const dayNow = date.getDay();
+  if ((timeNow >= 23) || (timeNow >= 0 && timeNow <= 6)) {
+    this.cart.nightDiscount = 5;
+  }
+  if (dayNow === 6 || dayNow === 0) {
+    this.cart.prop.weekendDiscount = 5;
+  }
 }
 
-function addSSD(macbook) {
-    macbook.price = macbook.price + 100;
-    macbook.ssd = true;
+function setBonus(cart) {
+  let bonus = 0;
+  bonus = 5 * Math.floor(cart.orderTotalPrice / 100);
+  this.cart.bonus = bonus;
 }
 
-const myMacBook = new MacBook();
-myMacBook.const();
-addMemory(myMacBook);
-myMacBook.const();
-addSSD(myMacBook);
-myMacBook.const();*/
+User.prototype.makeOrder = function makeOrder() {
+  this.orderTotalPrice = (this.orderTotalPrice - this.bonus)
+      * (1 - (this.nightDiscount + this.weekendDiscount) / 100);
+};
 
 
-/*
-cart = new Cart();
+User.prototype.addItem = function addItem(sum) {
+  this.orderTotalPrice += sum;
+};
+
+
+const cart = new User();
 cart.addItem(100);
 cart.addItem(200);
+
 cart.makeOrder(); // ‘Price after discount and including bonuses is 300’
 
 setBonus(cart);
 getDiscount(cart);
 
-cart.makeOrder(); // ‘Price after discount and including bonuses is 250.45’ (300 - bonuses - discount)*/
-
-
-
-class User {
-
-    constructor(name) {
-        this.name = name;
-        this.orderTotalPrice = 0;
-        this.weekendDiscount = 0;
-        this.nightDiscount = 0;
-        this.bonus = 0;
-    }
-}
-
-function getDiscount(cart) {
-    var date = new Date();
-    var time_now = date.getHours();
-    var day_now=date.getDay();
-    if( (time_now>=23) || (time_now>=0 && time_now<=6)){
-         cart.nightDiscount = 5;
-    }
-    if (day_now ==6||day_now==0) {
-         cart.weekendDiscount = 5;
-    }
-}
-function setBonus(cart) {
-    var bonus = 0;
-    bonus  = 5 * Math.floor(cart.orderTotalPrice/100);
-    cart.bonus =  bonus;
-}
-
-function  makeOrder(cart) {
-    return (cart.orderTotalPrice - cart.bonus) * (1 - (cart.nightDiscount+ cart.weekendDiscount)/100);
-}
+cart.makeOrder();
+// ‘Price after discount and including bonuses is 250.45’ (300 - bonuses - discount)
