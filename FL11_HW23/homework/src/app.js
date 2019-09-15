@@ -43,6 +43,7 @@ cart.addItem(200);
 
 cart.makeOrder(); // ‘Price after discount and including bonuses is 300’
 
+
 setBonus(cart);
 getDiscount(cart);
 
