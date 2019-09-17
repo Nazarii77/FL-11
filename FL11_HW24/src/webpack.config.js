@@ -15,8 +15,8 @@ const webpack_rules = [];
 const webpackOption = {
     entry: {
         'js/app.js': [
-            path.resolve(__dirname, './js/app.js' ),
-            path.resolve(__dirname, './js/app2.js' )/*,
+            path.resolve(__dirname, './js/app.js' )/*,
+            //path.resolve(__dirname, './js/newGame.js' ),
             path.resolve(__dirname, './sass/styles.sass' )*/
         ],
         //  'css/computedCss.js': './css/styles.css'
@@ -39,7 +39,7 @@ const webpackOption = {
             filename: ('src/dist', './index.html' )//relative to root of the application
         }),
         new MiniCssExtractPlugin({
-            filename:'/css/styles.css'
+            filename:'css/styles.css'
         }),
         new PrettierPlugin(),
          new CopyWebpackPlugin([

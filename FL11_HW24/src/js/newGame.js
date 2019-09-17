@@ -1,6 +1,6 @@
-var myFunc2 = () => {
-  console.log("hello2");
-};
+/*var myFunc2 = () => {
+  console.log("hello from module 2, you will not see this in builded version ");
+};*/
 
 myFunc2();
 //this will be  converted  to es5 too
@@ -13,6 +13,7 @@ newGame = () => {
   var element = document.getElementById("results");
   if (element !== null) {
     element.remove();
+    console.log(" this is function from module executed ");
   }
 };
 

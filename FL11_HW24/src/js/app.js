@@ -1,4 +1,4 @@
-const newGame = require("./app2.js");
+const newGame = require("./newGame.js");
 
 let round = 0;
 let humanWins = 0;
