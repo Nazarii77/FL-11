@@ -1,15 +1,15 @@
 // $("#someId").css({"prop" : "value", "prop1" : "value1", ...});
 
 //body: add padding 30px
-
+$('body').css({"padding" : "30px" });
 // id title: make align center, remove top margin
-
+$('#title').css({"align" : "center", "margin-top" : "0px" });
 // div after header: add double border and padding 20px
-
+$('#header').next().css({"padding" : "20px", "border" : "double"});
 // change color for all h2 and set top margin to 0
-
+$("h2").css({"color" : "green" ,"margin-top" : "0px"});
 // set font size 18px for all .list direct child
-
+$(".list > *").css({"font-size" : "18px"});
 
 
 // ******************************************************
@@ -25,14 +25,14 @@
 
 // in #list-1
   // show all hidden and not cloned li
-
+$('#list-1 > *:hidden').css({"display" : "inline"});
   // hide empty li
-
+$('#list-1 > li:empty').css({"display" : "none"});
 // in #list-3
   // for all even li set margin-left -20px
-
+$('#list-3 > li:even').css({"margin-left" : "-20px"});
   // for the first li set any different color
-
+$('#list-3 > li:first').css({"color" : "red"});
   // for all li with index > 5 set color to #ccc
 
 // show ul which is parent
