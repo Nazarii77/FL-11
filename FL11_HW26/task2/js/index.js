@@ -1,7 +1,3 @@
-const $list = $(".list");
-const $input = $("#add-input");
-const $add = $("#add-submit");
-
 const todos = [
   {
     text: "Buy milk",
@@ -12,3 +8,21 @@ const todos = [
     done: true
   }
 ];
+
+const $list = $(".list");
+const $input = $("#add-input");
+const $add = $("#add-submit");
+
+
+$add.click(function(){
+  //alert("Add was clicked.");
+    this.todos +=  [
+    {
+      text: "Buy milk",
+      done: false
+    }
+
+];
+
+});
+console.log(todos);
