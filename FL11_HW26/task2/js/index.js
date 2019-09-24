@@ -1,18 +1,8 @@
-const todos = [
-  {
-    text: "Buy milk",
-    done: false
-  },
-  {
-    text: "Play with dog",
-    done: true
-  }
-];
-
 const $list = $(".list");
 const $input = $("#add-input");
 const $add = $("#add-submit");
 
+ 
 $add.on( "click",function adding(){
     var node = document.createTextNode($input.val());
     let li = document.createElement('li');
@@ -26,12 +16,7 @@ $add.on( "click",function adding(){
     li.appendChild(spn);
     li.appendChild(btn);
     $input.val('') ;
-    $list.append(li)
-    this.todos +=  [
-        {   text: "Buy milk2",
-            done: false
-        }
-    ];
+    $list.append(li);
 });
 
 $list.on("click", "button.item-remove", function(){
@@ -39,7 +24,6 @@ $list.on("click", "button.item-remove", function(){
 });
 
 $list.on("click", "span.item-text", function(event){
-   // console.log(this)    /// .parentNode.addClass("done");
     $target = $(event.target);
     $target.addClass("done");
 });
