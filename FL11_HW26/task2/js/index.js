@@ -2,7 +2,7 @@ const $list = $(".list");
 const $input = $("#add-input");
 const $add = $("#add-submit");
 
- 
+
 $add.on( "click",function adding(){
     var node = document.createTextNode($input.val());
     let li = document.createElement('li');
@@ -23,8 +23,14 @@ $list.on("click", "button.item-remove", function(){
     this.parentNode.parentNode.removeChild(this.parentNode);
 });
 
+//plugin learning how to make
+$.fn.done  = function() {
+    this.addClass("done");
+};
+
 $list.on("click", "span.item-text", function(event){
     $target = $(event.target);
-    $target.addClass("done");
+    $target.done();  //this is plugin usage
 });
+
 
