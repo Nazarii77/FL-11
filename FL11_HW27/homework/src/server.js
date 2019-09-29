@@ -1,7 +1,13 @@
 const express = require('express')
 const app = express()
 const port = 3000
+const bodyParser = require('body-parser');
+const myRouter = require('./routes');
+const middleware = require('./middlewares/delete-authorization');
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.use(bodyParser.json({ type: 'application/json' }));
+app.use('/car', myRouter);
+app.use(middleware.deletePasswordCheck);
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))// Your code goes here
+app.get('/', (req, res) => res.send('Type  http://localhost:3000/car in the url'));
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
