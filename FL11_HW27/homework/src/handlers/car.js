@@ -1,86 +1,109 @@
-const filesystem = require('fs');
+const filesystem = require('fs')
+const pathFileName = './db/data.json';
 let data;
 
-function GetData(callback, FileBack = false) {
-    data = JSON.parse(filesystem.readFileSync('./db/data.json', 'utf8'));
-
-    if (FileBack) {
-        filesystem.writeFileSync('./db/data.json', JSON.stringify(data), 'utf8');
+filesystem.readFile(pathFileName, 'utf-8', (err, inputdata) => {
+    if (err) {
+        throw err;
     }
-    return callback();
+
+    data = JSON.parse(inputdata)
+})
+
+exports.getCars = function(req, res, next) {
+    res.statusCode = 200;
+    return res.json(data);
 }
 
-function getItemById(id) {
-    return GetData(() => {
-        let car = data.find(function (car) {
-            return car.id === Number(id)
-        });
-        if (car) {
-            return ({status: 200,body: car})
-        } else {
-            return ({status: 404,body: 'No such id'})
-        }
-    }, false);
+exports.get = function(req, res, next) {
+    const id = parseInt(req.params.id, 10);
+
+    const car = data.find(car => parseInt(car.id, 10) === id);
+
+    if (car) {
+        res.statusCode = 200;
+        return res.json(car);
+    }
+
+    res.statusCode = 404;
+    return res.send();
 }
 
-function addCar(id, brand, model, engineVolume, year) {
-    return GetData(() => {
-        let addCar = {id: id,brand: brand,model: model,engineVolume: engineVolume,year: year};
-        let car = data.find(function (car) {
-            return car.id === Number(addCar.id);
-        });
-        if (!car) {
-            data.push(addCar);
-            return {status: 201,body: addCar}
-        } else {
-            return {status: 409,body: {"message": 'Car already exists.'}}
-        }
-    }, true);
-}
+exports.post = function(req, res, next) {
+    const body = req.body;
 
-function getFull(){
-    return GetData(() =>{
-        return{status: 200,body:data}
-    })
-}
+    const car = data.find(car =>
+        car.brand === body.brand &&
+        car.model === body.model &&
+        car.year === body.year
+    );
 
-function putItemById(id, brand, model, engineVolume, year){
-    return GetData(()=>{
-        let car =  data.find(function (car) {
-            return car.id === Number(id)
-        })
-        if(car){
-            car.brand = brand;
-            car.model = model;
-            car.engineVolume = engineVolume;
-            car.year = year
-            return{status: 200,body: {"message": "The car has been successfully updated"}
-            }
-        }else{
-            return {status: 404}
-        }
-    })
-}
+    if (car) {
+        res.statusCode = 409;
+        return res.json({"message": 'Car already exists.'} );
+    }
 
-function deleteItemById(id){
-    return GetData(()=>{
-        let car = data.find(function (car) {
-            return car.id === Number(id);
-        });
-        if(car){
-            let car = data.find(function (car) {
-                return car.id !== Number(id);
-            })
-            return {status: 200,body:{"message": "The car has been successfully removed"}}
-        }else{
-            return { status: 404, body:{"message" : "Car with such id has not been found"}}
+    let maxId = data.reduce((acc, cur) => {
+        const id = parseInt(cur.id, 10);
+
+        if (acc < id) {
+            acc = cur.id;
         }
 
-    })
+        return acc;
+    }, 0);
+
+    const newCar = {
+        id: ++maxId,
+        ...body
+    };
+
+    data.push(newCar);
+
+    res.statusCode = 201;
+    return res.json(newCar);
 }
 
-module.exports.getItemById = getItemById;
-module.exports.addCar = addCar;
-module.exports.getFull = getFull;
-module.exports.putItemById = putItemById;
-module.exports.deleteItemById = deleteItemById;
+exports.put = function(req, res, next) {
+    const id = parseInt(req.params.id, 10);
+    const body = req.body;
+
+    let findCar = data.find(car => parseInt(car.id, 10) === id);
+
+    if (!findCar) {
+        res.statusCode = 404;
+        return res.send();
+    }
+
+    findCar = {
+        ...findCar,
+        ...body
+    }
+    findCar.id = id;
+
+    for (let i = 0; i < data.length; i++) {
+        let car = data[i];
+        if (parseInt(car.id, 10) === id) {
+            data[i] = findCar;
+        }
+    }
+
+    res.statusCode = 200;
+    return res.json(findCar);
+}
+
+exports.delete = function(req, res, next) {
+    const id = parseInt(req.params.id, 10);
+
+    let existsCar = data.some(car => parseInt(car.id, 10) === id);
+
+    if (!existsCar) {
+        res.statusCode = 404;
+        return res.send();
+    }
+
+    data = data.filter(car => parseInt(car.id, 10) !== id);
+
+    res.statusCode = 200;
+    return res.json({"message": "The car has been successfully removed"});
+}
