@@ -24,20 +24,20 @@ console.log(counter2());
 
 function Counter(){
 	var count = 0;
-	return () => count++
+	return () => count++;
 }
 
 
 var counter = Counter();
 counter()
 counter()
-console.log(counter());
+console.log(counter()); //////2
 
 
 var counter2 = Counter();
 counter2()
 counter2()
 counter2()
-console.log(counter2());
+console.log(counter2());/////3
 
 ///////////////////////////////////////////////////////////////////////////////////////////
